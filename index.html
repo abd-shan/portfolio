@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdulkader Shanbour | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="logo">Abdulkader</div>
+  
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <img src="./assets/image.png" alt="Abdulkader Shanbour" class="profile-img fade-in" />
+      <h1 class="fade-in">I'm Abdulkader Shanbour</h1>
+      <p class="slide-in">Frontend Developer | Software Engineer | Game Developer</p>
+      <div class="socials zoom-in">
+        <a href="https://github.com/abd-shan" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>
+      I am a frontend developer with solid background in software engineering, game programming (Java), project management using tools like JIRA and Trello, and problem-solving. I love building modern interfaces and implementing algorithms like Dijkstra, BST, AVL, and advanced AI in games such as Minesweeper and Ludo with ExpectiMinMax.
+    </p>
+  </section>
+
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Career Compass</h3>
+        <p>Job application platform with testing and filtering features.</p>
+      </div>
+      <div class="card">
+        <h3>Career Dashboard</h3>
+        <p>Manage job listings, companies, and employees.</p>
+        <a href="https://drive.google.com/file/d/1DCGkzNJD5GAyi8bCkm1F88qMg9jcKKvQ/view" target="_blank">View Demo</a>
+      </div>
+      <div class="card">
+        <h3>Submarine Simulation</h3>
+        <p>Physics-based submarine simulation for university project.</p>
+      </div>
+      <div class="card">
+        <h3>Survivors Dashboard</h3>
+        <p>Detainees management dashboard with basic features.</p>
+        <a href="https://drive.google.com/file/d/1Drw7SPaVGvYaEl04YFPR2kTqjnQrn7j1/view" target="_blank">View Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2>Skills & Knowledge</h2>
+    <div class="button-grid">
+      <a href="https://reactjs.org" target="_blank" class="btn-skill">React</a>
+      <a href="https://redux.js.org" target="_blank" class="btn-skill">Redux</a>
+      <a href="https://trello.com" target="_blank" class="btn-skill">Trello</a>
+      <a href="https://www.atlassian.com/software/jira" target="_blank" class="btn-skill">Jira</a>
+      <a href="https://www.oracle.com/java/" target="_blank" class="btn-skill">Java</a>
+      <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)" target="_blank" class="btn-skill">Minesweeper</a>
+      <a href="https://en.wikipedia.org/wiki/Ludo_(board_game)" target="_blank" class="btn-skill">Ludo + AI</a>
+      <a href="https://en.wikipedia.org/wiki/Expectiminimax" target="_blank" class="btn-skill">ExpectiMinMax</a>
+      <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank" class="btn-skill">Dijkstra</a>
+      <a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" class="btn-skill">BST</a>
+      <a href="https://en.wikipedia.org/wiki/AVL_tree" target="_blank" class="btn-skill">AVL Tree</a>
+      <a href="https://www.geeksforgeeks.org/problem-solving-dsa/" target="_blank" class="btn-skill">Problem Solving</a>
+    </div>
+  </section>
+
+  <section id="education" class="section">
+    <h2>Education</h2>
+    <p>Bachelor of IT — Damascus University (2021 - Present)</p>
+    <p>AI in Medicine Conference Participant</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: abd.alkader.shanbour@gmail.com</p>
+    <p>Phone: +963993505919</p>
+    <a href="./assets/Abdulkader-shanbour-CV.pdf" class="cv-download" download>Download CV</a>
+
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Abdulkader Shanbour</p>
+  </footer>
+  <button class="toggle-mode" onclick="document.body.classList.toggle('light-mode')">Toggle Mode</button>
+
+  <div class="hamburger" onclick="toggleMenu()">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('show');
+  }
+</script>
+
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    });
+
+    document.querySelectorAll('.section, .card').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
