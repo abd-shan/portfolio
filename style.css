@@ -40,8 +40,7 @@ html {
 /* Fix scrolling offset when clicking anchor links */
 .section,
 .hero {
-  scroll-snap-align: start;
-  scroll-margin-top: 120px; /* adjust to navbar height */
+  scroll-margin-top: 120px; 
 }
 
 /* Navbar */
