@@ -4,45 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content=" عبدالقادر نصر الشنبور | Abdulkader Shanbour | Frontend, Software Engineer, Game Developer Portfolio">
-  <meta name="keywords" content="React Developer, Software Engineer Syria, Abdulkader   , Game Developer Java, Problem Solving, CV, GitHub">
+  <meta name="keywords" content="React Developer, Software Engineer Syria, Abdulkader, Game Developer Java, Problem Solving, CV, GitHub">
   <meta name="author" content="Abdulkader Shanbour">
   <link rel="icon" type="image/png" href="./assets/image.png">
-
 
   <title>Abdulkader Shanbour - React.js Developer & Software Engineer</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <link rel="stylesheet" href="style.css" />
 </head>
+
+
+
 <body>
-<nav class="navbar">
-  <div class="logo">Abdulkader</div>
-  
-  <div class="hamburger" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
 
 
-  <ul class="nav-links">
-    <li><a href="#home">home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<!-- Background animated bubbles -->
+<div class="bubbles">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+  <nav class="navbar">
+    <div class="logo">Abdulkader</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+      
+    </ul>
+    
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
+          <i class="fas fa-moon"></i>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+  </nav>
+
+
 
   <header id="home" class="hero">
     <div class="hero-content">
       <img src="./assets/image.png" alt="Abdulkader Shanbour" class="profile-img fade-in" />
       <h1 class="fade-in">I'm Abdulkader Shanbour</h1>
-      <p class="slide-in">Frontend Developer | Software Engineer | Game Developer</p>
+      <p class="slide-in">Frontend Developer | Software Engineer </p>
       <div class="socials zoom-in">
-        <a href="https://github.com/abd-shan" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank">LinkedIn</a>
+        <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://gitlab.com/abdulkader_shanbour" target="_blank"><i class="fab fa-gitlab"></i></a>
+        <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
   </header>
@@ -58,8 +75,8 @@
     <h2>Projects</h2>
     <div class="card-grid">
       <div class="card">
-        <h3>Career Compass</h3>
-        <p>Job application platform with testing and filtering features.</p>
+        <h3>submarine simulation</h3>
+        <p>Simulating submarine motion using the laws of physics, taking into account the submarine's motion and speed at every moment.</p>
       </div>
       <div class="card">
         <h3>Career Dashboard</h3>
@@ -78,66 +95,186 @@
     </div>
   </section>
 
-  <section id="skills" class="section">
-    <h2>Skills & Knowledge</h2>
+
+<!-- ... existing navbar and hero ... -->
+
+<section id="skills" class="section">
+  <h2>Skills & Knowledge</h2>
+
+  <div class="skill-group">
+    <h3>Programming Languages</h3>
     <div class="button-grid">
-      <a href="https://reactjs.org" target="_blank" class="btn-skill">React</a>
-      <a href="https://redux.js.org" target="_blank" class="btn-skill">Redux</a>
-      <a href="https://trello.com" target="_blank" class="btn-skill">Trello</a>
-      <a href="https://www.atlassian.com/software/jira" target="_blank" class="btn-skill">Jira</a>
-      <a href="https://www.oracle.com/java/" target="_blank" class="btn-skill">Java</a>
-      <a href="https://en.wikipedia.org/wiki/Minesweeper_(video_game)" target="_blank" class="btn-skill">Minesweeper</a>
-      <a href="https://en.wikipedia.org/wiki/Ludo_(board_game)" target="_blank" class="btn-skill">Ludo + AI</a>
-      <a href="https://en.wikipedia.org/wiki/Expectiminimax" target="_blank" class="btn-skill">ExpectiMinMax</a>
-      <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" target="_blank" class="btn-skill">Dijkstra</a>
-      <a href="https://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" class="btn-skill">BST</a>
-      <a href="https://en.wikipedia.org/wiki/AVL_tree" target="_blank" class="btn-skill">AVL Tree</a>
-      <a href="https://www.geeksforgeeks.org/problem-solving-dsa/" target="_blank" class="btn-skill">Problem Solving</a>
+      <a class="btn-skill">Java</a>
+      <a class="btn-skill">JavaScript</a>
+      <a class="btn-skill">TypeScript</a>
+      <a class="btn-skill">Python</a>
+      <a class="btn-skill">C++</a>
+      <a class="btn-skill">C#</a>
+      <a class="btn-skill">HTML</a>
+      <a class="btn-skill">CSS</a>
+      <a class="btn-skill">PHP</a>
+      <a class="btn-skill">SQL</a>
+      <a class="btn-skill">Node.js</a>
     </div>
-  </section>
+  </div>
 
-  <section id="education" class="section">
-    <h2>Education</h2>
-    <p>Bachelor of IT — Damascus University (2021 - Present)</p>
-    <p>AI in Medicine Conference Participant</p>
-  </section>
+  <div class="skill-group">
+    <h3>Frameworks & Libraries</h3>
+    <div class="button-grid">
+      <a class="btn-skill" href="https://reactjs.org">React.js</a>
+      <a class="btn-skill" href="https://laravel.com">Laravel</a>
+      <a class="btn-skill" href="https://threejs.org">Three.js</a>
+    </div>
+  </div>
 
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <p>Email: abd.alkader.shanbour@gmail.com</p>
+  <div class="skill-group">
+    <h3>Algorithms & Problem Solving</h3>
+    <div class="button-grid">
+      <a class="btn-skill">Trees </a>
+      <a class="btn-skill">Graphs </a>
+      <a class="btn-skill">Minimax</a>
+      <a class="btn-skill">Expectimax</a>
+      <a class="btn-skill">ExpectiMinimax</a>
+      <a class="btn-skill">Alpha-Beta</a>
+      <a class="btn-skill">UCS</a>
+      <a class="btn-skill" href="https://codeforces.com">Codeforces</a>
+      <a class="btn-skill" href="https://leetcode.com">Leetcode</a>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Development Tools</h3>
+    <div class="button-grid">
+      <a class="btn-skill">Git</a>
+      <a class="btn-skill">GitHub</a>
+      <a class="btn-skill" href="https://gitlab.com/abdulkader_shanbour">GitLab</a>
+      <a class="btn-skill">JIRA</a>
+      <a class="btn-skill">Trello</a>
+      <a class="btn-skill">VS Code</a>
+      <a class="btn-skill">Docker</a>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Operating Systems</h3>
+    <div class="button-grid">
+      <a class="btn-skill">Windows</a>
+      <a class="btn-skill">Linux Mint</a>
+      <a class="btn-skill">Ubuntu</a>
+      <a class="btn-skill">Kali Linux</a>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <h3>Software Engineering</h3>
+    <div class="button-grid">
+      <a class="btn-skill">XP</a>
+      <a class="btn-skill">Scrum</a>
+      <a class="btn-skill">UML</a>
+      <a class="btn-skill">Requirement Analysis</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact section update -->
+<section id="contact" class="section">
+  <h2><i class="fas fa-envelope"></i>  Contact Me</h2>
+
+  <form action="https://formspree.io/f/mnnvaeop" method="POST" class="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="text" name="role" placeholder="Your Role (e.g. Recruiter, Developer...)" required />
+    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn-skill">
+      Send Message
+      <span class="loader" style="display: none;"></span>
+    </button>
+
+  </form>
+  <div class="another-contact">
+    <p>Or contact me directly:</p>
+    <p>Email: <a href="mailto:abd.alkader.shanbour@gmail.com">abd.alkader.shanbour@gmail.com</a></p>
     <p>Phone: +963993505919</p>
-    <a href="./assets/Abdulkader-shanbour-CV.pdf" class="cv-download" download>Download CV</a>
+  </div>
+  <div class="socials zoom-in">
+    <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.facebook.com/share/1AF1NA6cxm/" target="_blank"><i class="fab fa-facebook"></i></a>
+  </div>
 
-  </section>
+  <a href="./assets/Abdulkader-shanbour-CV.pdf" class="cv-download" download>Download CV</a>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Abdulkader Shanbour</p>
-  </footer>
-  <button class="toggle-mode" onclick="document.body.classList.toggle('light-mode')">Toggle Mode</button>
-
-  <div class="hamburger" onclick="toggleMenu()">
-  <div></div>
-  <div></div>
-  <div></div>
-</div>
-
-<script>
-  function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('show');
-  }
-</script>
-
+  <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+    document.addEventListener('DOMContentLoaded', function () {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
       });
+      document.querySelectorAll('.section, .card').forEach(el => observer.observe(el));
+
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+      }
     });
 
-    document.querySelectorAll('.section, .card').forEach(el => observer.observe(el));
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    }
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
+    });
+
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    }
+
+    const form = document.querySelector(".contact-form");
+    const alertBox = document.createElement("div");
+    alertBox.classList.add("form-alert");
+    form.appendChild(alertBox);
+    const loader = form.querySelector(".loader");
+    const button = form.querySelector("button");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      loader.style.display = "inline-block";
+      button.disabled = true;
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        loader.style.display = "none";
+        button.disabled = false;
+        if (response.ok) {
+          alertBox.className = "form-alert success";
+          alertBox.innerText = "✅ Message sent successfully!";
+          form.reset();
+        } else {
+          alertBox.className = "form-alert error";
+          alertBox.innerText = "❌ Error sending message.";
+        }
+      })
+      .catch(() => {
+        loader.style.display = "none";
+        button.disabled = false;
+        alertBox.className = "form-alert error";
+        alertBox.innerText = "❌ Network error. Please try again.";
+      });
+    });
   </script>
+
+
 </body>
 </html>
