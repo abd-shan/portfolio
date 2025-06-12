@@ -218,7 +218,7 @@
     <a href="https://www.facebook.com/share/1AF1NA6cxm/" target="_blank"><i class="fab fa-facebook"></i></a>
   </div>
 
-<a href="https://abd-shan.github.io/portfolio/assets/Abdulkader-shanbour-CV.pdf" class="cv-download" download>
+<a href="https://abd-shan.github.io/portfolio/assets/Abdulkader-CV.pdf" class="cv-download" download>
   <i class="fas fa-download"></i> Download CV
 </a>
 
@@ -289,7 +289,7 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // Remove once shown
+          observer.unobserve(entry.target); 
         }
       });
     }, { threshold: 0.1 });
