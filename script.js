@@ -344,11 +344,11 @@ document.addEventListener('DOMContentLoaded', function() {
             function updateSpeedDisplay() {
                 const speedLevel = speedSlider.value;
                 if (speedLevel < 5) {
-                    speedValue.textContent = 'بطيئة';
+                    speedValue.textContent = 'slow';
                 } else if (speedLevel < 15) {
-                    speedValue.textContent = 'متوسطة';
+                    speedValue.textContent = 'normal';
                 } else {
-                    speedValue.textContent = 'سريعة';
+                    speedValue.textContent = 'fast';
                 }
             }
             

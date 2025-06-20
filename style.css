@@ -561,7 +561,6 @@ body.light-mode {
         
         .slider {
             flex: 1;
-            -webkit-appearance: none;
             height: 10px;
             border-radius: 5px;
             background: linear-gradient(to right, #4361ee, #3a0ca3);
