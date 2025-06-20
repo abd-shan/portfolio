@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,29 +11,14 @@
 
   <title>Abdulkader Shanbour - React.js Developer & Software Engineer</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 
-
-
 <body>
-
-
-<!-- Background animated bubbles -->
-<div class="bubbles">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  <!-- Particles background -->
+  <div id="particles-js"></div>
 
   <nav class="navbar">
     <div class="logo">Abdulkader</div>
@@ -41,27 +27,40 @@
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
-      
     </ul>
     
     <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
-          <i class="fas fa-moon"></i>
+      <i class="fas fa-moon"></i>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
       <div></div><div></div><div></div>
     </div>
   </nav>
 
-
-
   <header id="home" class="hero">
     <div class="hero-content">
-      <img src="./assets/image.png" alt="Abdulkader Shanbour" class="profile-img fade-in" />
+      <div class="profile-container">
+        <img src="./assets/image.png" alt="Abdulkader Shanbour" class="profile-img" />
+        <div class="tech-icons">
+          <i class="fab fa-react"></i>
+          <i class="fab fa-js"></i>
+          <i class="fab fa-java"></i>
+          <i class="fab fa-python"></i>
+        </div>
+      </div>
       <h1 class="fade-in">I'm Abdulkader Shanbour</h1>
-      <p class="slide-in">Frontend Developer | Software Engineer </p>
-      <div class="socials zoom-in">
+      <p class="slide-in">Frontend Developer | Software Engineer</p>
+      <div class="typewriter-container">
+        <span id="typewriter"></span>
+        <span class="cursor">|</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Contact Me</a>
+      </div>
+      <div class="socials">
         <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://gitlab.com/abdulkader_shanbour" target="_blank"><i class="fab fa-gitlab"></i></a>
         <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -70,242 +69,468 @@
   </header>
 
   <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      I am a frontend developer with solid background in software engineering, game programming (Java), project management using tools like JIRA and Trello, and problem-solving. I love building modern interfaces and implementing algorithms like Dijkstra, BST, AVL, and advanced AI in games such as Minesweeper and Ludo with ExpectiMinMax.
-    </p>
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I am a passionate frontend developer with a strong background in software engineering and game development. 
+            With expertise in modern JavaScript frameworks like React.js and a deep understanding of algorithms, 
+            I create engaging and efficient digital experiences.
+          </p>
+          <p>
+            My journey in technology began with a fascination for solving complex problems and creating interactive 
+            applications. I specialize in implementing advanced algorithms such as Dijkstra, BST, AVL, and AI techniques 
+            in games like Minesweeper and Ludo using ExpectiMinMax.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="number" data-count="4">0</span>
+              <span class="label">Projects</span>
+            </div>
+            <div class="stat">
+              <span class="number" data-count="2">0</span>
+              <span class="label">Years Experience</span>
+            </div>
+            <div class="stat">
+              <span class="number" data-count="10">0</span>
+              <span class="label">Technologies</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>submarine simulation</h3>
-        <p>Simulating submarine motion using the laws of physics, taking into account the submarine's motion and speed at every moment.</p>
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="game">Game Development</button>
+        <button class="filter-btn" data-filter="ai">AI & Algorithms</button>
       </div>
-      <div class="card">
-        <h3>Career Dashboard</h3>
-        <p>Manage job listings, companies, and employees.</p>
-        <a href="https://drive.google.com/file/d/1DCGkzNJD5GAyi8bCkm1F88qMg9jcKKvQ/view" target="_blank">View Demo</a>
-      </div>
-      <div class="card">
-        <h3>Submarine Simulation</h3>
-        <p>Physics-based submarine simulation for university project.</p>
-      </div>
-      <div class="card">
-        <h3>Survivors Dashboard</h3>
-        <p>Detainees management dashboard with basic features.</p>
-        <a href="https://drive.google.com/file/d/1Drw7SPaVGvYaEl04YFPR2kTqjnQrn7j1/view" target="_blank">View Demo</a>
+      <div class="projects-grid">
+        <div class="project-card" data-category="ai">
+          <div class="project-image">
+            <img src="./assets/submarine.jpg" alt="Submarine Simulation">
+            <div class="project-links">
+              <!-- <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a> -->
+              <a href="https://github.com/abd-shan/submarine-simulate" class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Submarine Simulation</h3>
+            <p>Advanced physics-based submarine motion simulation using real-world physics models.</p>
+            <div class="project-tech">
+              <span>Three.js</span>
+              <span>Typescript</span>
+              <span>Physics</span>
+              <span>Simulation</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="web">
+          <div class="project-image">
+            <img src="./assets/career.jpg" alt="Career Dashboard">
+            <div class="project-links">
+              <a href="https://drive.google.com/file/d/1DCGkzNJD5GAyi8bCkm1F88qMg9jcKKvQ/view" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              <a href="https://github.com/abd-shan/Career-Compass-dashboard" class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Career Dashboard</h3>
+            <p>Comprehensive dashboard for managing job listings, companies, and employee data.</p>
+            <div class="project-tech">
+              <span>React.js</span>
+              <span>Node.js</span>
+              <span>MySQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="game">
+          <div class="project-image">
+            <img src="./assets/ludo.jpg" alt="Ludo AI">
+            <div class="project-links">
+              <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+              <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Ludo AI with ExpectiMinMax</h3>
+            <p>Advanced Ludo game implementation with AI using ExpectiMinMax algorithm.</p>
+            <div class="project-tech">
+              <span>Java</span>
+              <span>AI</span>
+              <span>Game Dev</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="web">
+          <div class="project-image">
+            <div class="project-links">
+              <a href="https://drive.google.com/file/d/1Drw7SPaVGvYaEl04YFPR2kTqjnQrn7j1/view" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3>Survivors Dashboard</h3>
+            <p>Management system for detainees with advanced search and reporting features.</p>
+            <div class="project-tech">
+              <span>Laravel</span>
+              <span>React.js</span>
+              <span>MySQL</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-
-<!-- ... existing navbar and hero ... -->
-
-<section id="skills" class="section">
-  <h2 class="section-title">Skills & Knowledge</h2>
-
-  <div class="skills-container">
-
-    <!-- Programming Languages -->
-    <div class="skill-card">
-      <h3><i class="fas fa-code"></i> Programming Languages</h3>
-      <div class="skill-tags">
-        <a href="https://www.java.com" target="_blank"><i class="fab fa-java"></i> Java</a>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><i class="fab fa-js"></i> JavaScript</a>
-        <a href="https://www.typescriptlang.org" target="_blank"><i class="fas fa-code"></i> TypeScript</a>
-        <a href="https://www.python.org" target="_blank"><i class="fab fa-python"></i> Python</a>
-        <a href="https://isocpp.org" target="_blank"><i class="fas fa-code"></i> C++</a>
-        <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank"><i class="fas fa-code"></i> C#</a>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><i class="fab fa-html5"></i> HTML</a>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><i class="fab fa-css3-alt"></i> CSS</a>
-        <a href="https://www.php.net" target="_blank"><i class="fab fa-php"></i> PHP</a>
-        <a href="https://www.mysql.com" target="_blank"><i class="fas fa-database"></i> SQL</a>
-        <a href="https://nodejs.org" target="_blank"><i class="fab fa-node-js"></i> Node.js</a>
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3><i class="fas fa-code"></i> Frontend Development</h3>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>React.js</span>
+              <span>95%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="95"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>JavaScript</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>HTML/CSS</span>
+              <span>92%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="92"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class="fas fa-server"></i> Backend & Databases</h3>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>Node.js</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>MySQL</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>SQL Server</span>
+              <span>82%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="75"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>Java</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>Game AI</span>
+              <span>88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="88"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>Physics Simulation</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class="fas fa-brain"></i> Algorithms & Problem Solving</h3>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>Data Structures</span>
+              <span>92%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="92"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>AI Algorithms</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="90"></div>
+            </div>
+          </div>
+          <div class="skill-level">
+            <div class="skill-info">
+              <span>Optimization</span>
+              <span>87%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="87"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="certifications">
+        <h3><i class="fas fa-certificate"></i> Certifications</h3>
+        <div class="certificates-grid">
+          <div class="certificate">
+            <i class="fab fa-react"></i>
+            <h4>Advanced React</h4>
+          </div>
+          <div class="certificate">
+            <i class="fab fa-js"></i>
+            <h4>JavaScript Algorithms</h4>
+            <p>TestDemo</p>
+          </div>
+          <div class="certificate">
+            <i class="fab fa-java"></i>
+            <h4>advance Java Programming</h4>
+            <p>Sololearn Certified</p>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Frameworks & Libraries -->
-    <div class="skill-card">
-      <h3><i class="fas fa-layer-group"></i> Frameworks & Libraries</h3>
-      <div class="skill-tags">
-        <a href="https://reactjs.org" target="_blank"><i class="fab fa-react"></i> React.js</a>
-        <a href="https://laravel.com" target="_blank"><i class="fab fa-laravel"></i> Laravel</a>
-        <a href="https://threejs.org" target="_blank"><i class="fas fa-cube"></i> Three.js</a>
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title">basic Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">2024 - present</div>
+          <div class="timeline-content">
+            <h3>Software Engineer</h3>
+            <h4>My university</h4>
+            <p>Created game mechanics and AI systems for various projects. Implemented pathfinding algorithms and optimized game performance for different platforms.</p>
+            <div class="experience-tech">
+              <span>Jira</span>
+              <span>Jerllo</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="timeline-item">
+          <div class="timeline-date">2023 - Present</div>
+          <div class="timeline-content">
+            <h3>Frontend Developer</h3>
+            <h4>My Own Project</h4>
+            <p>Developed and maintained responsive web applications using React.js and modern frontend technologies. Implemented complex UI components and optimized application performance.</p>
+            <div class="experience-tech">
+              <span>React.js</span>
+              <span>Redux</span>
+              <span>TypeScript</span>
+            </div>
+          </div>
+        </div>
+        
+
+        
+
       </div>
     </div>
+  </section>
 
-    <!-- Algorithms -->
-    <div class="skill-card">
-      <h3><i class="fas fa-brain"></i> Algorithms & Problem Solving</h3>
-      <div class="skill-tags">
-        <a href="#" target="_blank"><i class="fas fa-sitemap"></i> Trees</a>
-        <a href="#" target="_blank"><i class="fas fa-project-diagram"></i> Graphs</a>
-        <a href="#" target="_blank"><i class="fas fa-magic"></i> Minimax</a>
-        <a href="#" target="_blank"><i class="fas fa-robot"></i> Expectimax</a>
-        <a href="#" target="_blank"><i class="fas fa-robot"></i> ExpectiMinimax</a>
-        <a href="#" target="_blank"><i class="fas fa-adjust"></i> Alpha-Beta</a>
-        <a href="#" target="_blank"><i class="fas fa-search"></i> UCS</a>
-        <a href="https://codeforces.com" target="_blank"><i class="fas fa-terminal"></i> Codeforces</a>
-        <a href="https://leetcode.com" target="_blank"><i class="fas fa-code"></i> Leetcode</a>
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>abd.alkader.shanbour@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+963 993 505 919</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <p>Damascus, Syria</p>
+            </div>
+          </div>
+          <div class="contact-socials">
+            <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/share/1AF1NA6cxm/" target="_blank"><i class="fab fa-facebook"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form action="https://formspree.io/f/mnnvaeop" method="POST">
+            <div class="form-group">
+              <input type="text" name="name" placeholder="Your Name" required />
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" placeholder="Your Email" required />
+            </div>
+            <div class="form-group">
+              <input type="text" name="subject" placeholder="Subject" required />
+            </div>
+            <div class="form-group">
+              <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">
+              Send Message <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
+  </section>
+  <section class="fun-section">
+            <div class="about-image">
+ <div class="code-container">
+            <div class="code-header">
+                <h2 class="code-title"><i class="fas fa-file-code"></i> خوارزمية Minimax مع تقليم Alpha-Beta</h2>
+                <div class="controls">
+                    <button id="startBtn" class="btn"><i class="fas fa-play"></i> ابدأ الكتابة</button>
+                    <button id="stopBtn" class="btn btn-stop"><i class="fas fa-pause"></i> توقف مؤقت</button>
+                    <button id="resetBtn" class="btn btn-reset"><i class="fas fa-redo"></i> إعادة تعيين</button>
+                </div>
+            </div>
+            
+            <div class="code-content">
+                <div class="code-snippet">
+                    <pre><code id="codeOutput"></code></pre>
+                </div>
+                
+                <div class="speed-control">
+                    <div class="control-group">
+                        <label for="speedSlider"><i class="fas fa-tachometer-alt"></i> سرعة الكتابة:</label>
+                        <input type="range" id="speedSlider" class="slider" min="1" max="20" value="10">
+                        <span id="speedValue" class="speed-value">متوسطة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
 
-    <!-- Development Tools -->
-    <div class="skill-card">
-      <h3><i class="fas fa-tools"></i> Development Tools</h3>
-      <div class="skill-tags">
-        <a href="https://git-scm.com" target="_blank"><i class="fab fa-git-alt"></i> Git</a>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://gitlab.com/abdulkader_shanbour" target="_blank"><i class="fab fa-gitlab"></i> GitLab</a>
-        <a href="https://www.atlassian.com/software/jira" target="_blank"><i class="fab fa-jira"></i> JIRA</a>
-        <a href="https://trello.com" target="_blank"><i class="fab fa-trello"></i> Trello</a>
-        <a href="https://code.visualstudio.com/" target="_blank"><i class="fas fa-code"></i> VS Code</a>
-        <a href="https://www.docker.com/" target="_blank"><i class="fab fa-docker"></i> Docker</a>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Abdulkader Shanbour</div>
+        <p>Frontend Developer & Software Engineer</p>
+        <div class="footer-nav">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.facebook.com/share/1AF1NA6cxm/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Abdulkader Shanbour. All Rights Reserved.</p>
+        <a href="https://abd-shan.github.io/portfolio/assets/Abdulkader-CV.pdf" class="cv-download" download>
+          <i class="fas fa-download"></i> Download CV
+        </a>
       </div>
     </div>
+  </footer>
 
-    <!-- OS -->
-    <div class="skill-card">
-      <h3><i class="fas fa-desktop"></i> Operating Systems</h3>
-      <div class="skill-tags">
-        <a href="https://www.microsoft.com/windows" target="_blank"><i class="fab fa-windows"></i> Windows</a>
-        <a href="https://linuxmint.com/" target="_blank"><i class="fab fa-linux"></i> Linux Mint</a>
-        <a href="https://ubuntu.com/" target="_blank"><i class="fab fa-ubuntu"></i> Ubuntu</a>
-        <a href="https://www.kali.org/" target="_blank"><i class="fas fa-terminal"></i> Kali Linux</a>
-      </div>
-    </div>
-
-    <!-- SE -->
-    <div class="skill-card">
-      <h3><i class="fas fa-project-diagram"></i> Software Engineering</h3>
-      <div class="skill-tags">
-        <a href="#" target="_blank"><i class="fas fa-lightbulb"></i> XP</a>
-        <a href="#" target="_blank"><i class="fas fa-sync-alt"></i> Scrum</a>
-        <a href="#" target="_blank"><i class="fas fa-draw-polygon"></i> UML</a>
-        <a href="#" target="_blank"><i class="fas fa-clipboard-list"></i> Requirement Analysis</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-
-<!-- Contact section update -->
-<section id="contact" class="section">
-  <h2><i class="fas fa-envelope"></i>  Contact Me</h2>
-
-  <form action="https://formspree.io/f/mnnvaeop" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required />
-    <input type="text" name="role" placeholder="Your Role (e.g. Recruiter, Developer...)" required />
-    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn-skill">
-      Send Message
-      <span class="loader" style="display: none;"></span>
-    </button>
-
-  </form>
-  <div class="another-contact">
-    <p>Or contact me directly:</p>
-    <p>Email: <a href="mailto:abd.alkader.shanbour@gmail.com">abd.alkader.shanbour@gmail.com</a></p>
-    <p>Phone: +963993505919</p>
-  </div>
-  <div class="socials zoom-in">
-    <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://www.facebook.com/share/1AF1NA6cxm/" target="_blank"><i class="fab fa-facebook"></i></a>
-  </div>
-
-<a href="https://abd-shan.github.io/portfolio/assets/Abdulkader-CV.pdf" class="cv-download" download>
-  <i class="fas fa-download"></i> Download CV
-</a>
-
-</section>
-
-  <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});"><i class="fas fa-arrow-up"></i></button>
-
-<script>
-  // === Theme Handling ===
+  <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'auto'});">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <script>
+          // Theme toggle
   function toggleTheme() {
     document.body.classList.toggle('light-mode');
-    localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+    const themeIcon = document.querySelector('.theme-toggle i');
+    if (document.body.classList.contains('light-mode')) {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+      localStorage.setItem('theme', 'light');
+    } else {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+      localStorage.setItem('theme', 'dark');
+    }
   }
-
-  // === Scroll to Top Button ===
-  const scrollBtn = document.getElementById("scrollTopBtn");
-  window.addEventListener("scroll", () => {
-    scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
-  });
-
-  // === Mobile Menu Toggle ===
+  
+  // Apply saved theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    document.querySelector('.theme-toggle i').classList.remove('fa-moon');
+    document.querySelector('.theme-toggle i').classList.add('fa-sun');
+  }
+  
+  // Mobile menu toggle
   function toggleMenu() {
     document.querySelector('.nav-links').classList.toggle('show');
   }
 
-  // === Form Submission with Feedback ===
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector(".contact-form");
-    const loader = form.querySelector(".loader");
-    const button = form.querySelector("button");
-    const alertBox = document.createElement("div");
-    alertBox.classList.add("form-alert");
-    form.appendChild(alertBox);
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      loader.style.display = "inline-block";
-      button.disabled = true;
-
-      fetch(form.action, {
-        method: "POST",
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(response => {
-        loader.style.display = "none";
-        button.disabled = false;
-        if (response.ok) {
-          alertBox.className = "form-alert success";
-          alertBox.innerText = "✅ Message sent successfully!";
-          form.reset();
-        } else {
-          alertBox.className = "form-alert error";
-          alertBox.innerText = "❌ Error sending message.";
-        }
-      })
-      .catch(() => {
-        loader.style.display = "none";
-        button.disabled = false;
-        alertBox.className = "form-alert error";
-        alertBox.innerText = "❌ Network error. Please try again.";
-      });
-    });
-
-    // === Animate on Scroll ===
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target); 
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section, .card, .skill-card, .fade-up').forEach(el => {
-      observer.observe(el);
-    });
-
-    // === Theme Persistence ===
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-mode');
-    }
-  });
-</script>
-
-
-
+  </script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="./script.js" >  </script>
 </body>
 </html>
