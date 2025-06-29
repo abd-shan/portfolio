@@ -47,7 +47,7 @@ body.light-mode {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -697,8 +697,20 @@ body.light-mode {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 700px) {
+ .projects-filter {
+  display: flex;
+  flex-direction: column  ;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+} 
+  
+}
+
+
 .filter-btn {
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   background: transparent;
   border: 2px solid var(--accent);
   color: var(--text);
@@ -714,6 +726,7 @@ body.light-mode {
 }
 
 .projects-grid {
+  justify-content: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
@@ -1088,6 +1101,11 @@ body.light-mode {
   gap: 3rem;
 }
 
+@media (max-width:700px){
+ .contact-container{
+  font-size: small;
+ }
+}
 .contact-info {
   flex: 1;
 }
