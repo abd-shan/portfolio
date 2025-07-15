@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Typewriter effect
   const typewriterElement = document.getElementById('typewriter');
   const texts = [
-    "React.js Developer",
     "Software Engineer",
+    "React.js Developer",
+    "Next.js Developer",
     "Problem Solver"
   ];
   
@@ -74,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Animate on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
