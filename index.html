@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content=" عبدالقادر نصر الشنبور | Abdulkader Shanbour | Frontend, Software Engineer, Game Developer Portfolio">
-  <meta name="keywords" content="React Developer, Software Engineer Syria, Abdulkader, Game Developer Java, Problem Solving, CV, GitHub">
+  <meta name="description" content=" عبدالقادر الشنبور | عبدالقادر نصر الشنبور | Abdulkader Shanbour | Frontend, Software Engineer, Game Developer Portfolio">
+  <meta name="keywords" content="React Developer, Software Engineer Syria, Abdulkader, Problem Solving, CV, GitHub, عبدالقادر نصر الشنبور, عبدالقادر الشنبور">
   <meta name="author" content="Abdulkader Shanbour">
   <link rel="icon" type="image/png" href="./assets/image.png">
 
@@ -39,32 +39,99 @@
     </div>
   </nav>
 
+
   <header id="home" class="hero">
+    <!-- Animated background elements -->
+    <div class="hero-bg-elements">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+      <div class="floating-shape shape-4"></div>
+    </div>
+    
     <div class="hero-content">
+      <!-- Profile section with enhanced design -->
       <div class="profile-container">
+        <div class="profile-ring">
+          <div class="profile-ring-inner"></div>
+        </div>
         <img src="./assets/image.png" alt="Abdulkader Shanbour" class="profile-img" />
         <div class="tech-icons">
-          <i class="fab fa-react"></i>
-          <i class="fab fa-js"></i>
-          <i class="fab fa-java"></i>
-          <i class="fab fa-python"></i>
+          <div class="tech-icon" data-tooltip="React.js">
+            <i class="fab fa-react"></i>
+          </div>
+          <div class="tech-icon" data-tooltip="JavaScript">
+            <i class="fab fa-js"></i>
+          </div>
+          <div class="tech-icon" data-tooltip="Node.js">
+            <i class="fab fa-node-js"></i>
+          </div>
+          <div class="tech-icon" data-tooltip="Java">
+            <i class="fab fa-java"></i>
+          </div>
+       
+          <div class="tech-icon" data-tooltip="Git">
+            <i class="fab fa-git-alt"></i>
+          </div>
         </div>
       </div>
-      <h1 class="fade-in">I'm Abdulkader Shanbour</h1>
-      <p class="slide-in">Frontend Developer | Software Engineer</p>
-      <div class="typewriter-container">
-        <span id="typewriter"></span>
-        <span class="cursor">|</span>
+      
+      <!-- Enhanced text content -->
+      <div class="hero-text">
+        <div class="greeting">Hello, I'm</div>
+        <h1 class="hero-title">
+          <span class="name-highlight">Abdulkader</span>
+          <span class="name-highlight">Shanbour</span>
+        </h1>
+        <p class="hero-subtitle">Frontend Developer & Software Engineer</p>
+        
+        <!-- Enhanced typewriter effect -->
+        <div class="typewriter-container">
+          <span class="typewriter-prefix">I'm a</span>
+          <span id="typewriter" class="typewriter-text"></span>
+          <span class="cursor">|</span>
+        </div>
+        
+        <!-- Enhanced description -->
+        <p class="hero-description">
+          Passionate about creating exceptional digital experiences through clean code, 
+          innovative solutions, and cutting-edge technologies.
+        </p>
       </div>
+      
+      <!-- Enhanced CTA buttons -->
       <div class="hero-cta">
-        <a href="#projects" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-secondary">Contact Me</a>
+        <a href="#projects" class="btn-primary">
+          <span>View My Work</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#contact" class="btn-secondary">
+          <span>Get In Touch</span>
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="./assets/Abdulkader_sh.pdf" class="btn-outline" download>
+          <span>Download CV</span>
+          <i class="fas fa-download"></i>
+        </a>
       </div>
+      
+      <!-- Enhanced social links -->
       <div class="socials">
-        <a href="https://github.com/abd-shan" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://gitlab.com/abdulkader_shanbour" target="_blank"><i class="fab fa-gitlab"></i></a>
-        <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/abd-shan" target="_blank" class="social-link" data-tooltip="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://gitlab.com/abdulkader_shanbour" target="_blank" class="social-link" data-tooltip="GitLab">
+          <i class="fab fa-gitlab"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/abdulkader-shanbour-06320b343" target="_blank" class="social-link" data-tooltip="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:abd.alkader.shanbour@gmail.com" class="social-link" data-tooltip="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
       </div>
+      
+     
     </div>
   </header>
 
@@ -285,7 +352,7 @@
               <span>82%</span>
             </div>
             <div class="skill-bar">
-              <div class="skill-progress" data-width="75"></div>
+              <div class="skill-progress" data-width="82"></div>
             </div>
           </div>
         </div>
@@ -403,9 +470,9 @@
     </div>
   </section>
 
-  <section id="experience" class="section">
+  <section id="basic-experience" class="section">
     <div class="container">
-      <h2 class="section-title">basic Experience</h2>
+      <h2 class="section-title">Basic Experience</h2>
       <div class="timeline">
 
         <div class="timeline-item">

@@ -17,20 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Typewriter effect
+  // Enhanced Typewriter effect
   const typewriterElement = document.getElementById('typewriter');
   const texts = [
     "Software Engineer",
-    "React.js Developer",
+    "React.js Developer", 
     "Next.js Developer",
-    "Problem Solver"
+    "Problem Solver",
   ];
   
   let textIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
+  let isPaused = false;
   
   function type() {
+    if (isPaused) return;
+    
     const currentText = texts[textIndex];
     
     if (isDeleting) {
@@ -41,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
       charIndex++;
     }
     
-    let typeSpeed = 100;
+    let typeSpeed = 80;
     
     if (isDeleting) {
-      typeSpeed /= 2;
+      typeSpeed /= 3;
     }
     
     if (!isDeleting && charIndex === currentText.length) {
@@ -59,7 +62,23 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(type, typeSpeed);
   }
   
-  setTimeout(type, 1000);
+  // Start typewriter after a delay
+  setTimeout(type, 1500);
+  
+  // Pause typewriter on hover
+  const typewriterContainer = document.querySelector('.typewriter-container');
+  if (typewriterContainer) {
+    typewriterContainer.addEventListener('mouseenter', () => {
+      isPaused = true;
+    });
+    
+    typewriterContainer.addEventListener('mouseleave', () => {
+      isPaused = false;
+      if (typewriterElement.textContent === '') {
+        setTimeout(type, 100);
+      }
+    });
+  }
   
 
   
@@ -161,6 +180,39 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.nav-links').classList.remove('show');
       }
     });
+  });
+  
+  // Enhanced scroll indicator functionality
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+      const aboutSection = document.querySelector('#about');
+      if (aboutSection) {
+        window.scrollTo({
+          top: aboutSection.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+  
+  // Add scroll indicator visibility
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    
+    if (hero && scrollIndicator) {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const scrollTop = window.pageYOffset;
+      
+      if (scrollTop > heroBottom - 100) {
+        scrollIndicator.style.opacity = '0';
+        scrollIndicator.style.visibility = 'hidden';
+      } else {
+        scrollIndicator.style.opacity = '1';
+        scrollIndicator.style.visibility = 'visible';
+      }
+    }
   });
 });
 
@@ -338,7 +390,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let typingInterval;
             let index = 0;
             let isTyping = false;
-            let speed = 100; // ms per character
+            let speed = 100; 
             
             // Update speed display
             function updateSpeedDisplay() {
@@ -354,9 +406,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Apply syntax highlighting
             function highlightCode(code) {
-                return code
-                          }
-            
+              return code
+            }
+
             // Type the code character by character
             function typeCode() {
                 if (index < originalCode.length) {
@@ -374,9 +426,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     clearInterval(typingInterval);
                     isTyping = false;
                     codeOutput.innerHTML = highlightCode(currentCode);
+
+
+                    setTimeout(() => {
+                        resetCode();
+                        startTyping();
+                    }, 2000); 
                 }
             }
-            
+
             // Start typing
             function startTyping() {
                 if (isTyping) return;
