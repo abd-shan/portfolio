@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 isTyping = true;
-                speed = 250 - (speedSlider.value * 10); // Convert slider to speed (ms)
+                speed = 200 - (speedSlider.value * 9); 
                 typingInterval = setInterval(typeCode, speed);
             }
             
