@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Apply syntax highlighting
+
             function highlightCode(code) {
               return code
             }
@@ -415,10 +415,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentCode += originalCode.charAt(index);
                     const highlightedCode = highlightCode(currentCode);
                     
-                    // Add cursor at the end
+
                     codeOutput.innerHTML = highlightedCode + '<span class="cursor"></span>';
                     
-                    // Scroll to the bottom
+
                     codeOutput.parentElement.scrollTop = codeOutput.parentElement.scrollHeight;
                     
                     index++;
@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
             function startTyping() {
                 if (isTyping) return;
                 
-                // If we've reached the end, reset
+
                 if (index >= originalCode.length) {
                     resetCode();
                 }
@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 typingInterval = setInterval(typeCode, speed);
             }
             
-            // Stop typing
+
             function stopTyping() {
                 if (!isTyping) return;
                 clearInterval(typingInterval);
@@ -458,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 codeOutput.innerHTML = highlightCode(currentCode);
             }
             
-            // Reset code
+
             function resetCode() {
                 stopTyping();
                 currentCode = '';
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 codeOutput.innerHTML = '<span class="cursor"></span>';
             }
             
-            // Event listeners
+
             startBtn.addEventListener('click', startTyping);
             stopBtn.addEventListener('click', stopTyping);
             resetBtn.addEventListener('click', resetCode);
@@ -479,7 +479,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // Initialize
+
             resetCode();
             updateSpeedDisplay();
         });
+
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const visitCountElement = document.getElementById("visitCount");
+
+    const updateVisits = () => {
+      let visits = parseInt(localStorage.getItem("visits") || "0", 10);
+      visits++;
+      localStorage.setItem("visits", visits);
+
+      if (visitCountElement) {
+        visitCountElement.textContent = `👀 Visits: ${visits.toLocaleString()}`;
+        visitCountElement.classList.add("animate-visit");
+        setTimeout(() => visitCountElement.classList.remove("animate-visit"), 600);
+      }
+    };
+
+    updateVisits();
+  });

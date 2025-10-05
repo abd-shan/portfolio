@@ -1763,6 +1763,19 @@ footer {
   transform: translateY(-3px);
 }
 
+  .visit-counter {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .visit-counter.animate-visit {
+    transform: scale(1.2);
+    color: var(--accent-color, #3b82f6);
+  }
+
 /* fun section */
 
 
