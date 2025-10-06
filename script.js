@@ -486,21 +486,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  document.addEventListener('DOMContentLoaded', async () => {
-    const el = document.getElementById('visitCount');
-    // استعمل namespace/key فريدين لمشروعك
-    const namespace = 'abd-shan';
-    const key = 'portfolio_visits';
-    const url = `https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
+document.addEventListener('DOMContentLoaded', async () => {
+  const visitCountElement = document.getElementById('visitCount');
+  if (!visitCountElement) return;
 
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Network response not ok');
-      const json = await res.json();
-      const visits = json?.value ?? 0;
-      if (el) el.textContent = `👀 Visits: ${visits.toLocaleString()}`;
-    } catch (err) {
-      if (el) el.textContent = `👀 Visits: —`;
-      console.error('CountAPI error:', err);
-    }
-  });
+  const binId = '68e3ffcf43b1c97be95ca1c8 	'; 
+  const apiKey = '$2a$10$LYjVM.Pvo.EMR/aZ4khgouC4RAZEddX6mOb5TPtj7T2MIY7H77MUW';  
+  const url = `https://api.jsonbin.io/v3/b/${binId}`;
+
+  try {
+
+    const getResponse = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'X-Master-Key': apiKey,
+      },
+    });
+
+    if (!getResponse.ok) throw new Error('Failed to fetch visit count');
+    const getData = await getResponse.json();
+    let visits = getData.record.visits || 0;
+
+
+    visits += 1;
+
+
+    const updateResponse = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': apiKey,
+      },
+      body: JSON.stringify({ visits }),
+    });
+
+    if (!updateResponse.ok) throw new Error('Failed to update visit count');
+
+
+    visitCountElement.textContent = `👀 Visits: ${visits.toLocaleString()}`;
+    visitCountElement.classList.add('animate-visit');
+    setTimeout(() => visitCountElement.classList.remove('animate-visit'), 600);
+  } catch (error) {
+    console.error('Error:', error);
+    visitCountElement.textContent = '👀 Visits: —';
+  }
+});
