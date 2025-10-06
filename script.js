@@ -486,20 +486,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const visitCountElement = document.getElementById("visitCount");
+  document.addEventListener('DOMContentLoaded', async () => {
+    const el = document.getElementById('visitCount');
+    // استعمل namespace/key فريدين لمشروعك
+    const namespace = 'abd-shan';
+    const key = 'portfolio_visits';
+    const url = `https://api.countapi.xyz/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`;
 
-    const updateVisits = () => {
-      let visits = parseInt(localStorage.getItem("visits") || "0", 10);
-      visits++;
-      localStorage.setItem("visits", visits);
-
-      if (visitCountElement) {
-        visitCountElement.textContent = `👀 Visits: ${visits.toLocaleString()}`;
-        visitCountElement.classList.add("animate-visit");
-        setTimeout(() => visitCountElement.classList.remove("animate-visit"), 600);
-      }
-    };
-
-    updateVisits();
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Network response not ok');
+      const json = await res.json();
+      const visits = json?.value ?? 0;
+      if (el) el.textContent = `👀 Visits: ${visits.toLocaleString()}`;
+    } catch (err) {
+      if (el) el.textContent = `👀 Visits: —`;
+      console.error('CountAPI error:', err);
+    }
   });
