@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'cairo', sans-serif;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: var(--text);
   line-height: 1.6;
