@@ -155,7 +155,6 @@ body.light-mode {
   overflow: hidden;
   background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.95), rgba(var(--secondary-rgb), 0.9));
   padding: 2rem 0;
-  margin-top: 5%;
 }
 
 /* Hero container for new layout */
