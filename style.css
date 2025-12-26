@@ -118,17 +118,6 @@ body.light-mode {
   position: relative;
 }
 
-.logo::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 30px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  border-radius: 2px;
-}
-
 .theme-toggle {
   cursor: pointer;
   width: 44px;
@@ -500,8 +489,9 @@ body.light-mode {
 
 /* Enhanced CTA Buttons */
 .hero-cta {
-  display: flex;
-  gap: 1.2rem;
+  width: 100%;
+  display: inline-flex;
+  gap: 0.5rem;
   margin-bottom: 2.5rem;
   animation: fadeInUp 0.8s ease forwards 1s;
   flex-wrap: wrap;
@@ -573,7 +563,6 @@ body.light-mode {
 .socials {
   display: flex;
   gap: 1.2rem;
-  justify-content: center;
   animation: fadeInUp 0.8s ease forwards 1.2s;
   flex-wrap: wrap;
 }
@@ -677,17 +666,7 @@ body.light-mode {
   font-weight: 700;
 }
 
-.section-title::after {
-  content: "";
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-light));
-  border-radius: 2px;
-}
+
 
 /* Enhanced About Section */
 .about-content {
@@ -1593,6 +1572,7 @@ footer::before {
   gap: 10px;
   transition: var(--transition);
   box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
+  text-decoration-line: none;
 }
 
 .btn:hover {
@@ -1762,6 +1742,10 @@ footer::before {
     display: none;
   }
 
+  .socials{
+    justify-content: center;
+  }
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
@@ -1776,6 +1760,9 @@ footer::before {
 
   .hero {
     padding: 100px 0 60px;
+  }
+  .socials{
+    justify-content: center;
   }
 
   .hero-title {
