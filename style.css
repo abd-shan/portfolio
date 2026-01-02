@@ -150,7 +150,12 @@ body.light-mode {
   align-items: center;
 }
 
+.nav-links li {
+  width: 100%;
+}
+
 .nav-links a {
+  width: 100%;
   color: var(--text);
   text-decoration: none;
   transition: var(--transition);
@@ -439,6 +444,7 @@ body.light-mode {
 }
 
 .typewriter-container {
+  min-width: 70%;
   margin-bottom: 2rem;
   min-height: 3rem;
   font-size: 1.3rem;
@@ -1674,6 +1680,7 @@ footer::before {
   }
 
   .nav-links {
+    width: 100%;
     position: fixed;
     top: 0;
     right: -100%;
