@@ -215,6 +215,149 @@ body.light-mode {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--glass-dark);
+    backdrop-filter: var(--blur);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    border-radius: 0 0 20px 20px;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+  }
+
+
+
+  .nav-links.active {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    padding: 1rem 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    width: auto;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    transition: var(--transition);
+  }
+
+  .nav-links a:hover {
+    background: rgba(var(--accent-rgb), 0.15);
+    color: var(--accent-light);
+    transform: translateY(-2px);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+
+
+  .hamburger {
+    display: flex;
+    border-radius: 50%;
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    padding: 10px;
+    transition: var(--transition);
+  }
+
+  .hamburger:hover {
+    background: rgba(var(--accent-rgb), 0.2);
+  }
+
+  .hamburger.active {
+    background: var(--accent);
+  }
+
+  .hamburger.active div {
+    background: white;
+  }
+
+
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
+}
+
+
+.nav-links a {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.nav-links a.active {
+  color: var(--accent-light);
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+
+@media (min-width: 769px) {
+  .nav-links a:hover {
+    color: var(--accent-light);
+    transform: translateY(-2px);
+  }
+}
+
+
+.navbar {
+  padding: 1rem 2rem;
+}
+
+.navbar.scrolled {
+  padding: 0.7rem 2rem;
+}
+
+
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+
+
+.theme-toggle {
+  transition: var(--transition);
+}
+.theme-toggle:active {
+  transform: scale(0.9);
+}
+
 /* Enhanced Hero Section */
 .hero {
   position: relative;
@@ -694,22 +837,26 @@ body.light-mode {
 }
 
 .about-stats {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2rem; /* يمكنك تعديل القيمة حسب الرغبة */
   margin-top: 3rem;
-  flex-wrap: wrap;
+  align-items: stretch; /* لجعل جميع العناصر بنفس الارتفاع */
 }
 
 .stat {
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 1rem;
   background: var(--glass);
   backdrop-filter: var(--blur);
   border-radius: var(--border-radius);
   border: 1px solid rgba(var(--accent-rgb), 0.1);
   transition: var(--transition);
-  min-width: 140px;
+  /* إزالة min-width الفردية، لأن grid يتحكم بالعرض */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stat:hover {
@@ -724,6 +871,7 @@ body.light-mode {
   color: var(--accent);
   display: block;
   margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
 .label {
@@ -732,9 +880,18 @@ body.light-mode {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 500;
+  word-break: break-word; /* لتفادي تجاوز النص الطويل */
 }
 
-/* Enhanced Projects Section */
+
+@media (max-width: 480px) {
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* =========================== Enhanced Projects Section =========================== */
 .projects-filter {
   display: flex;
   justify-content: center;
@@ -1792,15 +1949,6 @@ footer::before {
 
   .section-title {
     font-size: 2rem;
-  }
-
-  .about-stats {
-    gap: 1rem;
-  }
-
-  .stat {
-    padding: 1.5rem;
-    min-width: calc(50% - 0.5rem);
   }
 
   .projects-filter {
