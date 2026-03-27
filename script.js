@@ -1,5 +1,311 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('motion-ready');
+    const navbar = document.querySelector('.navbar');
+    const heroSection = document.querySelector('.hero');
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    const langToggle = document.getElementById('langToggle');
+    let currentLanguage = localStorage.getItem('lang') || 'en';
+    let refreshTypewriterTexts = null;
+    let refreshSpeedLabel = null;
+    if (!['en', 'ar'].includes(currentLanguage)) currentLanguage = 'en';
+
+    const translations = {
+        en: {
+            nav_home: 'Home',
+            nav_about: 'About',
+            nav_projects: 'Projects',
+            nav_skills: 'Skills',
+            nav_experience: 'Experience',
+            nav_contact: 'Contact',
+            visit_label: 'visitors',
+            visit_counter_prefix: '👀 visits:',
+            visit_counter_empty: '👀 visits: —',
+            hero_greeting: "Hello, I'm",
+            hero_subtitle: 'Frontend Developer & Software Engineer',
+            hero_type_prefix: "I'm a",
+            hero_description: 'Passionate about creating exceptional digital experiences through clean code, innovative solutions, and cutting-edge technologies.',
+            hero_cta_work: 'View My Work',
+            hero_cta_contact: 'Get In Touch',
+            hero_cta_cv: 'Download CV',
+            about_title: 'About Me',
+            about_p1: 'I am a <strong>Software Engineer</strong> specializing in frontend and full-stack development. I create high-performance, interactive applications using <strong>React.js</strong>, <strong>Next.js</strong>, and backend technologies like <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>Nest.js</strong>.',
+            about_p2: 'I implement advanced algorithms and data structures, including <strong>Dijkstra</strong>, <strong>BST</strong>, <strong>AVL</strong>, and AI techniques like <strong>ExpectiMinMax</strong> for games such as Minesweeper and Ludo. I focus on bridging elegant UI with robust, scalable logic.',
+            about_stat_projects: 'Projects',
+            about_stat_years: 'Years Experience',
+            about_stat_tech: 'Technologies',
+            project_easy_apply_title: 'Easy Apply System',
+            project_easy_apply_desc: 'A secure, dynamic portal for high-volume applications. Implemented a data-driven UI where all content is dynamically fetched and rendered based on admin configurations. <br><strong>No VPN, Syrian IP only</strong>',
+            project_services_dashboard_title: 'Services Company Management Dashboard',
+            project_services_dashboard_desc: 'Comprehensive admin dashboard for managing all company services, employee permissions, communication tracking, and advanced company settings.',
+            project_selfcare_title: 'ISP Self-Care',
+            project_selfcare_desc: 'Customer service portal for tracking consumption, subscriptions, and account information with customizable visual identity and multi-language support.',
+            project_hr_title: 'HR Management System',
+            project_hr_desc: 'Enterprise HR system for a government hospital (<strong>~900 employees</strong>), deployed on-premise. Built <strong>role-based, KPI-driven dashboards</strong> and refactored UI routing into a <strong>domain-driven, Facade-based architecture</strong> for scalability and maintainability.',
+            project_submarine_title: 'Submarine Simulation',
+            project_submarine_desc: 'Advanced physics-based submarine motion simulation using real-world physics models.',
+            project_career_title: 'Career Dashboard',
+            project_career_desc: 'Comprehensive dashboard for managing job listings, companies, and employee data.',
+            project_ludo_title: 'Ludo AI with ExpectiMinMax',
+            project_ludo_desc: 'Advanced Ludo game implementation with AI using ExpectiMinMax algorithm.',
+            exp_work_role_next: 'Next.js Developer',
+            exp_work_desc_next: 'Built performant and SEO-optimized web applications using Next.js, leveraging both Server-Side Rendering (SSR) and Client-Side Rendering (CSR) techniques. Developed advanced dashboards with real-time interactivity, modular architecture, and dynamic routing using Next.js app directory structure.',
+            exp_basic_role_se: 'Software Engineer',
+            exp_basic_org_uni: 'My university',
+            exp_basic_desc_se: 'Created game mechanics and AI systems for various projects. Implemented pathfinding algorithms and optimized game performance for different platforms.',
+            exp_basic_role_fe: 'Frontend Developer',
+            exp_basic_org_own: 'My Own Project',
+            exp_basic_desc_fe: 'Developed and maintained responsive web applications using React.js and modern frontend technologies. Implemented complex UI components and optimized application performance.',
+            projects_title: 'Featured Projects',
+            projects_filter_all: 'All',
+            projects_filter_web: 'Web Development',
+            projects_filter_game: 'Game Development',
+            projects_filter_ai: 'AI & Algorithms',
+            skills_title: 'Skills & Expertise',
+            experience_title: 'Work Experience',
+            basic_experience_title: 'Basic Experience',
+            contact_title: "Let's Connect",
+            contact_email: 'Email',
+            contact_phone: 'Phone',
+            contact_location: 'Location',
+            contact_ph_name: 'Your Name',
+            contact_ph_email: 'Your Email',
+            contact_ph_subject: 'Subject',
+            contact_ph_message: 'Your Message',
+            contact_send: 'Send Message',
+            code_title: 'algorithm Minimax & Alpha-Beta',
+            code_start: 'start',
+            code_pause: 'Pause',
+            code_resume: 'resume',
+            code_speed: 'speed',
+            speed_slow: 'slow',
+            speed_normal: 'normal',
+            speed_fast: 'fast',
+            footer_subtitle: 'Frontend Developer & Software Engineer',
+            footer_copyright: '© 2024 Abdulkader Shanbour. All Rights Reserved.',
+            lang_toggle_label: 'Switch language',
+            typewriter_roles: ['Software Engineer', 'React.js Developer', 'Next.js Developer', 'Problem Solver']
+        },
+        ar: {
+            nav_home: 'الرئيسية',
+            nav_about: 'من أنا',
+            nav_projects: 'المشاريع',
+            nav_skills: 'المهارات',
+            nav_experience: 'الخبرة',
+            nav_contact: 'التواصل',
+            visit_label: 'زائر',
+            visit_counter_prefix: '👀 الزيارات:',
+            visit_counter_empty: '👀 الزيارات: —',
+            hero_greeting: 'مرحباً، أنا',
+            hero_subtitle: 'مطور واجهات أمامية ومهندس برمجيات',
+            hero_type_prefix: 'أنا',
+            hero_description: 'شغوف ببناء تجارب رقمية مميزة عبر كود نظيف وحلول مبتكرة وتقنيات حديثة.',
+            hero_cta_work: 'استعرض أعمالي',
+            hero_cta_contact: 'تواصل معي',
+            hero_cta_cv: 'تحميل السيرة الذاتية',
+            about_title: 'نبذة عني',
+            about_p1: 'أنا <strong>Software Engineer</strong> متخصص في تطوير الواجهات والتطوير Full-stack. أقوم ببناء تطبيقات عالية الأداء وتفاعلية باستخدام <strong>React.js</strong> و <strong>Next.js</strong> وتقنيات Backend مثل <strong>Node.js</strong> و <strong>Express.js</strong> و <strong>Nest.js</strong>.',
+            about_p2: 'أطوّر خوارزميات وهياكل بيانات متقدمة مثل <strong>Dijkstra</strong> و <strong>BST</strong> و <strong>AVL</strong> وتقنيات AI مثل <strong>ExpectiMinMax</strong> لألعاب مثل Minesweeper و Ludo. أركّز على الدمج بين واجهات أنيقة ومنطق قوي قابل للتوسع.',
+            about_stat_projects: 'المشاريع',
+            about_stat_years: 'سنوات الخبرة',
+            about_stat_tech: 'التقنيات',
+            project_easy_apply_title: 'نظام التقديم السريع',
+            project_easy_apply_desc: 'بوابة آمنة وديناميكية لاستقبال أعداد كبيرة من الطلبات. تم تنفيذ واجهة تعتمد على البيانات بحيث يتم جلب كل المحتوى وعرضه ديناميكياً بناءً على إعدادات المسؤول. <br><strong>بدون VPN، متاح فقط عبر IP سوري</strong>',
+            project_services_dashboard_title: 'لوحة إدارة شركة الخدمات',
+            project_services_dashboard_desc: 'لوحة تحكم إدارية شاملة لإدارة جميع خدمات الشركة وصلاحيات الموظفين وتتبع التواصل وإعدادات الشركة المتقدمة.',
+            project_selfcare_title: 'بوابة ISP Self-Care',
+            project_selfcare_desc: 'بوابة خدمة عملاء لمتابعة الاستهلاك والاشتراكات ومعلومات الحساب مع هوية بصرية قابلة للتخصيص ودعم متعدد اللغات.',
+            project_hr_title: 'نظام إدارة الموارد البشرية',
+            project_hr_desc: 'نظام موارد بشرية لمشفى حكومي (<strong>~900 موظف</strong>) يعمل On-Premise. تم بناء <strong>لوحات تحكم تعتمد على الأدوار وKPI</strong> وإعادة هيكلة مسارات الواجهة ضمن <strong>domain-driven, Facade-based architecture</strong> لضمان القابلية للتوسع وسهولة الصيانة.',
+            project_submarine_title: 'محاكاة الغواصة',
+            project_submarine_desc: 'محاكاة متقدمة لحركة الغواصة اعتماداً على نماذج فيزيائية واقعية.',
+            project_career_title: 'لوحة Career Dashboard',
+            project_career_desc: 'لوحة شاملة لإدارة الوظائف والشركات وبيانات الموظفين.',
+            project_ludo_title: 'لعبة Ludo مع ExpectiMinMax',
+            project_ludo_desc: 'تنفيذ متقدم للعبة Ludo مع AI باستخدام خوارزمية ExpectiMinMax.',
+            exp_work_role_next: 'مطور Next.js',
+            exp_work_desc_next: 'بناء تطبيقات ويب عالية الأداء ومحسّنة لمحركات البحث باستخدام Next.js مع توظيف Server-Side Rendering (SSR) وClient-Side Rendering (CSR). تطوير لوحات تحكم متقدمة بتفاعلية لحظية وبنية Modular ومسارات ديناميكية باستخدام Next.js app directory.',
+            exp_basic_role_se: 'مهندس برمجيات',
+            exp_basic_org_uni: 'جامعتي',
+            exp_basic_desc_se: 'تطوير آليات اللعب وأنظمة AI لمشاريع متعددة، وتنفيذ خوارزميات pathfinding وتحسين أداء الألعاب على منصات مختلفة.',
+            exp_basic_role_fe: 'Frontend Developer',
+            exp_basic_org_own: 'مشروعي الخاص',
+            exp_basic_desc_fe: 'تطوير وصيانة تطبيقات ويب متجاوبة باستخدام React.js وتقنيات Frontend الحديثة، مع تنفيذ مكونات UI معقدة وتحسين أداء التطبيق.',
+            projects_title: 'مشاريع مميزة',
+            projects_filter_all: 'الكل',
+            projects_filter_web: 'تطوير الويب',
+            projects_filter_game: 'تطوير الألعاب',
+            projects_filter_ai: 'الذكاء الاصطناعي والخوارزميات',
+            skills_title: 'المهارات والخبرة',
+            experience_title: 'الخبرة العملية',
+            basic_experience_title: 'خبرات أساسية',
+            contact_title: 'لنتواصل',
+            contact_email: 'البريد الإلكتروني',
+            contact_phone: 'الهاتف',
+            contact_location: 'الموقع',
+            contact_ph_name: 'الاسم',
+            contact_ph_email: 'البريد الإلكتروني',
+            contact_ph_subject: 'الموضوع',
+            contact_ph_message: 'رسالتك',
+            contact_send: 'إرسال الرسالة',
+            code_title: 'خوارزمية Minimax و Alpha-Beta',
+            code_start: 'ابدأ',
+            code_pause: 'إيقاف',
+            code_resume: 'استئناف',
+            code_speed: 'السرعة',
+            speed_slow: 'بطيء',
+            speed_normal: 'عادي',
+            speed_fast: 'سريع',
+            footer_subtitle: 'مطور واجهات أمامية ومهندس برمجيات',
+            footer_copyright: '© 2024 عبدالقادر الشنبور. جميع الحقوق محفوظة.',
+            lang_toggle_label: 'تبديل اللغة',
+            typewriter_roles: ['مهندس برمجيات', 'مطور React.js', 'مطور Next.js', 'محلل مشكلات']
+        }
+    };
+
+    function t(key) {
+        return translations[currentLanguage][key] ?? translations.en[key] ?? key;
+    }
+
+    function applyTranslations() {
+        document.documentElement.lang = currentLanguage;
+        document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+            const key = element.getAttribute('data-i18n');
+            element.textContent = t(key);
+        });
+
+        document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+            const key = element.getAttribute('data-i18n-html');
+            element.innerHTML = t(key);
+        });
+
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            element.setAttribute('placeholder', t(key));
+        });
+
+        if (langToggle) {
+            langToggle.textContent = currentLanguage === 'ar' ? 'EN' : 'AR';
+            langToggle.setAttribute('aria-label', t('lang_toggle_label'));
+        }
+    }
+
+    function setLanguage(lang) {
+        currentLanguage = lang === 'ar' ? 'ar' : 'en';
+        localStorage.setItem('lang', currentLanguage);
+        applyTranslations();
+        if (typeof refreshTypewriterTexts === 'function') {
+            refreshTypewriterTexts();
+        }
+        if (typeof refreshSpeedLabel === 'function') {
+            refreshSpeedLabel();
+        }
+    }
+
+    if (langToggle) {
+        langToggle.addEventListener('click', () => {
+            setLanguage(currentLanguage === 'en' ? 'ar' : 'en');
+        });
+    }
+
+    applyTranslations();
+
+    function closeMobileMenu(navLinks, hamburger) {
+        if (!navLinks || !hamburger) return;
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
+
+    function syncThemeIcon(themeIcon, isLightMode) {
+        if (!themeIcon) return;
+        if (isLightMode) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        } else {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+    }
+
+    function initHeroMouseLight() {
+        if (!heroSection) return;
+        if (!window.matchMedia('(pointer: fine)').matches) return;
+
+        let rafId = null;
+        let targetX = 50;
+        let targetY = 50;
+
+        heroSection.style.setProperty('--hero-light-x', '50%');
+        heroSection.style.setProperty('--hero-light-y', '50%');
+        heroSection.style.setProperty('--hero-light-opacity', '0');
+
+        function applyLightPosition() {
+            rafId = null;
+            heroSection.style.setProperty('--hero-light-x', `${targetX}%`);
+            heroSection.style.setProperty('--hero-light-y', `${targetY}%`);
+        }
+
+        heroSection.addEventListener('mouseenter', () => {
+            heroSection.style.setProperty('--hero-light-opacity', 'var(--hero-light-opacity-active)');
+        });
+
+        heroSection.addEventListener('mouseleave', () => {
+            heroSection.style.setProperty('--hero-light-opacity', '0');
+        });
+
+        heroSection.addEventListener('mousemove', (event) => {
+            const rect = heroSection.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
+
+            targetX = ((event.clientX - rect.left) / rect.width) * 100;
+            targetY = ((event.clientY - rect.top) / rect.height) * 100;
+
+            if (rafId === null) {
+                rafId = requestAnimationFrame(applyLightPosition);
+            }
+        });
+    }
+
+    function initHeroScrollDepth() {
+        if (!heroSection) return;
+        const aboutSection = document.getElementById('about');
+        if (!aboutSection) return;
+        if (window.matchMedia('(max-width: 768px)').matches) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        let rafId = null;
+        let heroRange = Math.max(heroSection.offsetHeight, 1);
+
+        function updateDepth() {
+            rafId = null;
+            const scrollY = window.scrollY || window.pageYOffset || 0;
+            const progress = Math.min(Math.max(scrollY / heroRange, 0), 1);
+
+            heroSection.style.setProperty('--hero-depth-bg-y', `${(progress * 16).toFixed(2)}px`);
+            heroSection.style.setProperty('--hero-depth-fg-y', `${(-progress * 10).toFixed(2)}px`);
+            heroSection.style.setProperty('--hero-depth-about-y', `${((1 - progress) * 14).toFixed(2)}px`);
+        }
+
+        function onScroll() {
+            if (rafId === null) {
+                rafId = requestAnimationFrame(updateDepth);
+            }
+        }
+
+        function onResize() {
+            heroRange = Math.max(heroSection.offsetHeight, 1);
+            onScroll();
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onResize, { passive: true });
+        updateDepth();
+    }
+
+    initHeroMouseLight();
+    initHeroScrollDepth();
 
     if (typeof particlesJS !== 'undefined') {
         particlesJS("particles-js", {
@@ -22,17 +328,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced Typewriter effect
     const typewriterElement = document.getElementById('typewriter');
     if (typewriterElement) {
-        const texts = [
-            "Software Engineer",
-            "React.js Developer",
-            "Next.js Developer",
-            "Problem Solver",
-        ];
+        let texts = translations[currentLanguage].typewriter_roles;
 
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
         let isPaused = false;
+
+        refreshTypewriterTexts = function() {
+            texts = translations[currentLanguage].typewriter_roles;
+            textIndex = 0;
+            charIndex = 0;
+            isDeleting = false;
+            typewriterElement.textContent = '';
+        };
 
         function type() {
             if (isPaused) return;
@@ -88,7 +397,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollBtn = document.getElementById("scrollTopBtn");
     if (scrollBtn) {
         window.addEventListener("scroll", () => {
-            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 300) {
                 scrollBtn.classList.add('active');
                 if (navbar) navbar.classList.add('scrolled');
@@ -103,45 +411,66 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-
-                // Animate skill bars
-                if (entry.target.id === 'skills') {
-                    document.querySelectorAll('.skill-progress').forEach(bar => {
-                        const width = bar.getAttribute('data-width');
-                        bar.style.width = width + '%';
-                    });
-                }
-
-                // Animate about numbers
-                if (entry.target.id === 'about') {
-                    document.querySelectorAll('.number').forEach(num => {
-                        const target = parseInt(num.getAttribute('data-count'));
-                        let count = 0;
-                        const increment = target / 50;
-
-                        const timer = setInterval(() => {
-                            count += increment;
-                            if (count >= target) {
-                                num.textContent = target;
-                                clearInterval(timer);
-                            } else {
-                                num.textContent = Math.ceil(count);
-                            }
-                        }, 20);
-                    });
-                }
-            }
+    // Intersection Observer for section-triggered animations
+    function animateSkillBars() {
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            bar.style.width = width + '%';
         });
-    }, { threshold: 0.1 });
+    }
 
-    document.querySelectorAll('.section').forEach(section => {
-        observer.observe(section);
+    function animateAboutNumbers() {
+        document.querySelectorAll('.number').forEach(num => {
+            const target = parseInt(num.getAttribute('data-count'));
+            let count = 0;
+            const increment = target / 50;
+
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    num.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    num.textContent = Math.ceil(count);
+                }
+            }, 20);
+        });
+    }
+
+    function handleSectionIntersection(entry, observer) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+
+        if (entry.target.id === 'skills') {
+            animateSkillBars();
+        }
+
+        if (entry.target.id === 'about') {
+            animateAboutNumbers();
+        }
+
+        if (observer) {
+            observer.unobserve(entry.target);
+        }
+    }
+
+    const sectionNodes = document.querySelectorAll('.section');
+    sectionNodes.forEach((section, index) => {
+        const delay = Math.min(index * 70, 280);
+        section.style.setProperty('--reveal-delay', `${delay}ms`);
     });
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => handleSectionIntersection(entry, observer));
+        }, { threshold: 0.1 });
+
+        sectionNodes.forEach(section => {
+            observer.observe(section);
+        });
+    } else {
+        sectionNodes.forEach((section) => section.classList.add('visible'));
+    }
 
     // Project filtering
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -179,8 +508,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== إ  Navbar ==========
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.querySelector('.theme-toggle i');
 
+    // Apply saved theme from previous sessions.
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        syncThemeIcon(themeIcon, true);
+    }
 
     window.toggleMenu = function() {
         if (!navLinks || !hamburger) return;
@@ -188,20 +524,23 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.classList.toggle('active');
     };
 
-
     window.toggleTheme = function() {
-        document.body.classList.toggle('light-mode');
-        // تغيير الأيقونة
-        if (themeIcon) {
-            if (document.body.classList.contains('light-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+        const isLightMode = document.body.classList.toggle('light-mode');
+        syncThemeIcon(themeIcon, isLightMode);
+        if (isLightMode) {
+            localStorage.setItem('theme', 'light');
+        } else {
+            localStorage.setItem('theme', 'dark');
         }
     };
+
+    if (hamburger) {
+        hamburger.addEventListener('click', window.toggleMenu);
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', window.toggleTheme);
+    }
 
 
     document.addEventListener('click', function(e) {
@@ -210,8 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (navLinks.classList.contains('active') &&
             !navLinks.contains(e.target) &&
             !hamburger.contains(e.target)) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
+            closeMobileMenu(navLinks, hamburger);
         }
     });
 
@@ -219,8 +557,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         if (!navLinks || !hamburger) return;
         if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
+            closeMobileMenu(navLinks, hamburger);
         }
     });
 
@@ -241,15 +578,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                 if (navLinks && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    hamburger.classList.remove('active');
+                    closeMobileMenu(navLinks, hamburger);
                 }
             }
         });
     });
 
     // Enhanced scroll indicator functionality
-    const scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
             const aboutSection = document.querySelector('#about');
@@ -264,11 +599,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Add scroll indicator visibility
     window.addEventListener('scroll', () => {
-        const hero = document.querySelector('.hero');
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-
-        if (hero && scrollIndicator) {
-            const heroBottom = hero.offsetTop + hero.offsetHeight;
+        if (heroSection && scrollIndicator) {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
             if (scrollTop > heroBottom - 100) {
@@ -284,6 +616,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Code typing effect
     const codeOutput = document.getElementById('codeOutput');
     if (codeOutput) {
+        const codeContainer = codeOutput.closest('.code-container');
+        const codeSnippet = codeOutput.parentElement;
         const startBtn = document.getElementById('startBtn');
         const stopBtn = document.getElementById('stopBtn');
         const resetBtn = document.getElementById('resetBtn');
@@ -462,26 +796,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const speedLevel = speedSlider.value;
             if (speedLevel < 5) {
-                speedValue.textContent = 'slow';
+                speedValue.textContent = t('speed_slow');
             } else if (speedLevel < 15) {
-                speedValue.textContent = 'normal';
+                speedValue.textContent = t('speed_normal');
             } else {
-                speedValue.textContent = 'fast';
+                speedValue.textContent = t('speed_fast');
             }
         }
 
+        refreshSpeedLabel = updateSpeedDisplay;
+
         function highlightCode(code) {
-            return code
-                .replace(/public class/g, '<span class="keyword">public class</span>')
-                .replace(/public/g, '<span class="keyword">public</span>')
-                .replace(/private/g, '<span class="keyword">private</span>')
-                .replace(/static/g, '<span class="keyword">static</span>')
-                .replace(/final/g, '<span class="keyword">final</span>')
-                .replace(/int|double|boolean|void/g, '<span class="type">$&</span>')
-                .replace(/if|else|for|return/g, '<span class="control">$&</span>')
-                .replace(/true|false/g, '<span class="literal">$&</span>')
-                .replace(/(\d+)/g, '<span class="number">$1</span>')
-                .replace(/"(.*?)"/g, '<span class="string">"$1"</span>');
+            const escapedCode = code
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+
+            const stringLiterals = [];
+            let highlighted = escapedCode.replace(/"([^"\\]|\\.)*"/g, (match) => {
+                const token = `__STR_${stringLiterals.length}__`;
+                stringLiterals.push(`<span class="string">${match}</span>`);
+                return token;
+            });
+
+            highlighted = highlighted
+                .replace(/\bpublic class\b/g, '<span class="keyword">public class</span>')
+                .replace(/\b(public|private|static|final)\b/g, '<span class="keyword">$1</span>')
+                .replace(/\b(int|double|boolean|void)\b/g, '<span class="type">$1</span>')
+                .replace(/\b(if|else|for|return)\b/g, '<span class="control">$1</span>')
+                .replace(/\b(true|false)\b/g, '<span class="literal">$1</span>')
+                .replace(/\b(\d+)\b/g, '<span class="number">$1</span>');
+
+            highlighted = highlighted.replace(/__STR_(\d+)__/g, (_, indexToken) => {
+                const idx = Number(indexToken);
+                return stringLiterals[idx] || '';
+            });
+
+            return highlighted;
         }
 
         // Type the code character by character
@@ -499,6 +850,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 clearInterval(typingInterval);
                 isTyping = false;
+                if (codeContainer) codeContainer.classList.remove('is-typing');
+                if (codeSnippet) codeSnippet.classList.remove('is-active');
                 codeOutput.innerHTML = highlightCode(currentCode);
 
                 setTimeout(() => {
@@ -517,6 +870,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             isTyping = true;
+            if (codeContainer) codeContainer.classList.add('is-typing');
+            if (codeSnippet) codeSnippet.classList.add('is-active');
             speed = 200 - (speedSlider.value * 9);
             typingInterval = setInterval(typeCode, speed);
         }
@@ -526,6 +881,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isTyping) return;
             clearInterval(typingInterval);
             isTyping = false;
+            if (codeContainer) codeContainer.classList.remove('is-typing');
+            if (codeSnippet) codeSnippet.classList.remove('is-active');
             // Remove cursor
             codeOutput.innerHTML = highlightCode(currentCode);
         }
@@ -594,15 +951,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!updateResponse.ok) throw new Error('Failed to update visit count');
 
 
-                visitCountElement.textContent = `👀 visits: ${visits.toLocaleString()}`;
+                const visitNumberNode = visitCountElement.querySelector('.visit-number');
+                const visitLabelNode = visitCountElement.querySelector('.visit-text');
+                if (visitNumberNode && visitLabelNode) {
+                    visitNumberNode.textContent = visits.toLocaleString();
+                    visitLabelNode.textContent = t('visit_label');
+                } else {
+                    visitCountElement.textContent = `${t('visit_counter_prefix')} ${visits.toLocaleString()}`;
+                }
                 visitCountElement.classList.add('animate-visit');
                 setTimeout(() => visitCountElement.classList.remove('animate-visit'), 600);
             } catch (error) {
                 console.error('Error:', error);
-                visitCountElement.textContent = '👀 visits: —';
+                const visitNumberNode = visitCountElement.querySelector('.visit-number');
+                const visitLabelNode = visitCountElement.querySelector('.visit-text');
+                if (visitNumberNode && visitLabelNode) {
+                    visitNumberNode.textContent = '—';
+                    visitLabelNode.textContent = t('visit_label');
+                } else {
+                    visitCountElement.textContent = t('visit_counter_empty');
+                }
             }
         }
 
         updateVisitCount();
     }
 });
+
