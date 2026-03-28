@@ -1,4 +1,12 @@
 /* style.css - Enhanced Professional Version */
+/* Architecture map:
+   1) Base + theme tokens
+   2) Global layout + navbar + hero
+   3) Section blocks (about/projects/skills/experience/contact/footer)
+   4) Timeline
+   5) Responsive rules
+   6) RTL adjustments
+*/
 :root {
   --primary: #0f172a;
   --secondary: #1e293b;
@@ -66,6 +74,10 @@ body.light-mode {
   --secondary-rgb: 226, 232, 240;
   --accent-rgb: 37, 99, 235;
   --accent-light-rgb: 96, 165, 250;
+}
+
+body.light-mode .timeline-content::after {
+  background: rgba(255, 255, 255, 0.74);
 }
 
 body.light-mode .hero {
@@ -1295,7 +1307,8 @@ body.light-mode .hero {
   margin-bottom: 60px;
   display: flex;
   transition: var(--transition);
-  z-index: 1;
+  z-index: 2;
+  isolation: isolate;
 }
 
 .timeline-item:hover {
@@ -1335,6 +1348,18 @@ body.light-mode .hero {
   transition: var(--transition);
   border: 1px solid rgba(var(--accent-rgb), 0.13);
   isolation: isolate;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.timeline-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  background: rgba(var(--secondary-rgb), 0.72);
+  pointer-events: none;
 }
 
 .timeline-item:hover .timeline-content {

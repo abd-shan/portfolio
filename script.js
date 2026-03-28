@@ -1,5 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Architecture groups:
+    // i18n, helpers, hero effects, observers, navigation/theme, interactions, fun section, visit counter
     document.body.classList.add('motion-ready');
     const navbar = document.querySelector('.navbar');
     const heroSection = document.querySelector('.hero');
@@ -10,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let refreshSpeedLabel = null;
     if (!['en', 'ar'].includes(currentLanguage)) currentLanguage = 'en';
 
+    // ===== i18n dictionary =====
     const translations = {
         en: {
             nav_home: 'Home',
@@ -212,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     applyTranslations();
 
+    // ===== shared helpers =====
     function closeMobileMenu(navLinks, hamburger) {
         if (!navLinks || !hamburger) return;
         navLinks.classList.remove('active');
@@ -229,6 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ===== hero effects =====
     function initHeroMouseLight() {
         if (!heroSection) return;
         if (!window.matchMedia('(pointer: fine)').matches) return;
@@ -325,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced Typewriter effect
+    // ===== hero typewriter =====
     const typewriterElement = document.getElementById('typewriter');
     if (typewriterElement) {
         let texts = translations[currentLanguage].typewriter_roles;
@@ -393,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Scroll to top button
+    // ===== scroll interactions =====
     const scrollBtn = document.getElementById("scrollTopBtn");
     if (scrollBtn) {
         window.addEventListener("scroll", () => {
@@ -411,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Intersection Observer for section-triggered animations
+    // ===== section observers =====
     function animateSkillBars() {
         document.querySelectorAll('.skill-progress').forEach(bar => {
             const width = bar.getAttribute('data-width');
@@ -472,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sectionNodes.forEach((section) => section.classList.add('visible'));
     }
 
-    // Project filtering
+    // ===== project filtering =====
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
 
@@ -506,6 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========== إ  Navbar ==========
+    // ===== navigation + theme =====
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const themeToggle = document.querySelector('.theme-toggle');
@@ -613,7 +619,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Code typing effect
+    // ===== fun section code typing =====
     const codeOutput = document.getElementById('codeOutput');
     if (codeOutput) {
         const codeContainer = codeOutput.closest('.code-container');
@@ -806,42 +812,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         refreshSpeedLabel = updateSpeedDisplay;
 
-        function highlightCode(code) {
-            const escapedCode = code
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+        function renderCode(code, withCursor) {
+            codeOutput.textContent = code;
 
-            const stringLiterals = [];
-            let highlighted = escapedCode.replace(/"([^"\\]|\\.)*"/g, (match) => {
-                const token = `__STR_${stringLiterals.length}__`;
-                stringLiterals.push(`<span class="string">${match}</span>`);
-                return token;
-            });
-
-            highlighted = highlighted
-                .replace(/\bpublic class\b/g, '<span class="keyword">public class</span>')
-                .replace(/\b(public|private|static|final)\b/g, '<span class="keyword">$1</span>')
-                .replace(/\b(int|double|boolean|void)\b/g, '<span class="type">$1</span>')
-                .replace(/\b(if|else|for|return)\b/g, '<span class="control">$1</span>')
-                .replace(/\b(true|false)\b/g, '<span class="literal">$1</span>')
-                .replace(/\b(\d+)\b/g, '<span class="number">$1</span>');
-
-            highlighted = highlighted.replace(/__STR_(\d+)__/g, (_, indexToken) => {
-                const idx = Number(indexToken);
-                return stringLiterals[idx] || '';
-            });
-
-            return highlighted;
+            if (withCursor) {
+                const cursorElement = document.createElement('span');
+                cursorElement.className = 'cursor';
+                codeOutput.appendChild(cursorElement);
+            }
         }
 
         // Type the code character by character
         function typeCode() {
             if (index < originalCode.length) {
                 currentCode += originalCode.charAt(index);
-                const highlightedCode = highlightCode(currentCode);
-
-                codeOutput.innerHTML = highlightedCode + '<span class="cursor"></span>';
+                renderCode(currentCode, true);
 
                 // Auto-scroll
                 codeOutput.parentElement.scrollTop = codeOutput.parentElement.scrollHeight;
@@ -852,7 +837,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isTyping = false;
                 if (codeContainer) codeContainer.classList.remove('is-typing');
                 if (codeSnippet) codeSnippet.classList.remove('is-active');
-                codeOutput.innerHTML = highlightCode(currentCode);
+                renderCode(currentCode, false);
 
                 setTimeout(() => {
                     resetCode();
@@ -884,7 +869,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (codeContainer) codeContainer.classList.remove('is-typing');
             if (codeSnippet) codeSnippet.classList.remove('is-active');
             // Remove cursor
-            codeOutput.innerHTML = highlightCode(currentCode);
+            renderCode(currentCode, false);
         }
 
         // Reset code
@@ -892,7 +877,7 @@ document.addEventListener('DOMContentLoaded', function() {
             stopTyping();
             currentCode = '';
             index = 0;
-            codeOutput.innerHTML = '<span class="cursor"></span>';
+            renderCode('', true);
         }
 
         // Add event listeners if elements exist
@@ -914,7 +899,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSpeedDisplay();
     }
 
-    // Visit Counter
+    // ===== visit counter =====
     const visitCountElement = document.getElementById('visitCount');
     if (visitCountElement) {
         async function updateVisitCount() {
