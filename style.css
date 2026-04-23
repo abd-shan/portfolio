@@ -1025,6 +1025,77 @@ body.light-mode .hero {
   overflow: hidden;
 }
 
+.project-image--placeholder {
+  background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.38), rgba(var(--secondary-rgb), 0.95));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem;
+  isolation: isolate;
+}
+
+.project-image--placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.18), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(var(--accent-light-rgb), 0.18), transparent 42%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 55%);
+}
+
+.project-image--placeholder > :not(.project-overlay) {
+  position: relative;
+  z-index: 1;
+}
+
+.project-image--placeholder .project-overlay {
+  z-index: 2;
+}
+
+.project-placeholder-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 70%;
+}
+
+.project-placeholder-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.project-placeholder-title {
+  font-size: 1.45rem;
+  line-height: 1.1;
+  color: #fff;
+  font-weight: 700;
+}
+
+.project-placeholder-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.project-placeholder-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-size: 1.6rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+}
+
 .project-image img {
   width: 100%;
   height: 100%;
