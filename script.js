@@ -25,18 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
             visit_counter_prefix: '👀 visits:',
             visit_counter_empty: '👀 visits: —',
             hero_greeting: "Hello, I'm",
-            hero_subtitle: 'Frontend Developer & Software Engineer',
+            hero_subtitle: 'Full-Stack Software Engineer & Programming Team Leader',
             hero_type_prefix: "I'm a",
-            hero_description: 'Passionate about creating exceptional digital experiences through clean code, innovative solutions, and cutting-edge technologies.',
+            hero_description: 'Specialized in Scalable Enterprise Architecture, Secure SDLC, and Sovereign System Integration.',
             hero_cta_work: 'View My Work',
             hero_cta_contact: 'Get In Touch',
             hero_cta_cv: 'Download CV',
             about_title: 'About Me',
-            about_p1: 'I am a <strong>Software Engineer</strong> specializing in frontend and full-stack development. I create high-performance, interactive applications using <strong>React.js</strong>, <strong>Next.js</strong>, and backend technologies like <strong>Node.js</strong>, <strong>Express.js</strong>, and <strong>Nest.js</strong>.',
-            about_p2: 'I implement advanced algorithms and data structures, including <strong>Dijkstra</strong>, <strong>BST</strong>, <strong>AVL</strong>, and AI techniques like <strong>ExpectiMinMax</strong> for games such as Minesweeper and Ludo. I focus on bridging elegant UI with robust, scalable logic.',
-            about_stat_projects: 'Projects',
+            about_p1: '<strong>Software Engineer & Technical Team Leader</strong> with deep expertise spanning across the entire stack—from crafting scalable, high-performance frontends with <strong>React.js</strong> & <strong>Next.js</strong> (versions 15/16) to architecting robust backend architectures using <strong>NestJS</strong>, and managing secure deployment infrastructures (<strong>Linux</strong>, <strong>Nginx</strong>, <strong>Docker</strong>).',
+            about_p2: 'Proven track record in leading cross-functional teams, enforcing clean code governance, implementing <strong>Zero-Trust security architectures</strong>, and integrating modern AI capabilities into sovereign digital environments.',
+            about_stat_projects: 'Enterprise & Sovereign Projects',
             about_stat_years: 'Years Experience',
             about_stat_tech: 'Technologies',
+            about_stat_teams: 'Cross-Functional Team Led',
+            about_stat_scale: 'Employees & Public Services Scale',
             project_easy_apply_title: 'Easy Apply System',
             project_easy_apply_desc: 'A secure, dynamic portal for high-volume applications. Implemented a data-driven UI where all content is dynamically fetched and rendered based on admin configurations. <br><strong>No VPN, Syrian IP only</strong>',
             project_services_dashboard_title: 'CloudTech IT Platform',
@@ -63,8 +65,23 @@ document.addEventListener('DOMContentLoaded', function() {
             project_modarnet_desc: 'Integrated company website combining ISP services and solar energy solutions with a unified service presentation.',
             project_management_dashboard_title: 'Management Dashboard',
             project_management_dashboard_desc: 'Internal admin dashboard for managing employees, services, permissions, and operational workflows.',
-            exp_work_role_next: 'Next.js Developer',
-            exp_work_desc_next: 'Built performant and SEO-optimized web applications using Next.js, leveraging both Server-Side Rendering (SSR) and Client-Side Rendering (CSR) techniques. Developed advanced dashboards with real-time interactivity, modular architecture, and dynamic routing using Next.js app directory structure.',
+            project_reinstatement_badge: 'Soon / Internal Project',
+            project_reinstatement_short: 'Government Reinstatement',
+            project_reinstatement_title: 'Government Reinstatement System',
+            project_reinstatement_desc: 'A highly secure, full-stack enterprise platform designed to automate and streamline sensitive administrative and reinstatement workflows for public sector employees. Features robust Role-Based Access Control (RBAC), advanced data encryption, and asynchronous task queuing for secure document processing.',
+            project_qatrah_badge: 'Private Infrastructure',
+            project_qatrah_short: 'Qatrah',
+            project_qatrah_title: 'Qatrah (Water Management Platform)',
+            project_qatrah_desc: 'A strategic regional platform developed for the public sector to manage water resource distribution pipelines, log infrastructure issues, and track public complaints with real-time monitoring dashboard.',
+            project_aoun_ai_badge: 'Live Demo',
+            project_aoun_ai_short: 'Aoun AI',
+            project_aoun_ai_title: 'Aoun AI Platform (Prototype)',
+            project_aoun_ai_desc: 'A sovereign AI-driven interaction layer and support platform. Built an independent, lightweight backend assistant using Python to handle contextual prompts securely, currently scaling to integrate LangChain and DeepSeek for government task automation.',
+            exp_lead_role: 'Programming Team Leader',
+            exp_lead_company: 'Directorate of Digital Transformation',
+            exp_lead_desc: '<li>Leading and mentoring a cross-functional engineering team comprising frontend, backend, mobile developers, systems analysts, and cyber-security/AI interns.</li><li>Overseeing the architecture, security, and deployment of strategic government enterprise platforms.</li><li>Establishing strict code governance and secure workflows via GitLab (enforcing Branch Isolation, blocking Direct Push, and mandating thorough Merge Requests).</li><li>Managing local production infrastructures, configuring Nginx (Reverse Proxy, SSL, and custom Maintenance Modes), and monitoring PM2/systemd processes.</li>',
+            exp_work_role_next: 'Frontend / Software Engineer',
+            exp_work_desc_next: '<li>Refactored and optimized the "Al-Fateh" multi-service application, boosting Core Web Vitals and performance metrics from 71% to 90%+.</li><li>Designed and built a dynamic application engine to control form fields, UI layouts, and multi-language content dynamically via an admin dashboard.</li><li>Developed secure, responsive self-service portals and corporate platforms for regional ISPs (GalaxyNet, OmniSmartStar) with real-time WebSocket traffic monitoring.</li><li>Maintained production environment stability by managing Docker containers, Nginx routing, and SSL configurations.</li>',
             exp_basic_role_se: 'Software Engineer',
             exp_basic_org_uni: 'My university',
             exp_basic_desc_se: 'Created game mechanics and AI systems for various projects. Implemented pathfinding algorithms and optimized game performance for different platforms.',
@@ -77,6 +94,11 @@ document.addEventListener('DOMContentLoaded', function() {
             projects_filter_game: 'Game Development',
             projects_filter_ai: 'AI & Algorithms',
             skills_title: 'Skills & Expertise',
+            skills_frontend_title: 'Frontend',
+            skills_backend_title: 'Backend & DB',
+            skills_devops_title: 'DevOps & Infra',
+            skills_security_title: 'Architecture & Security',
+            skills_ai_title: 'AI Integration',
             experience_title: 'Work Experience',
             basic_experience_title: 'Basic Experience',
             contact_title: "Let's Connect",
@@ -96,10 +118,10 @@ document.addEventListener('DOMContentLoaded', function() {
             speed_slow: 'slow',
             speed_normal: 'normal',
             speed_fast: 'fast',
-            footer_subtitle: 'Frontend Developer & Software Engineer',
+            footer_subtitle: 'Full-Stack Software Engineer & Programming Team Leader',
             footer_copyright: '© 2024 Abdulkader Shanbour. All Rights Reserved.',
             lang_toggle_label: 'Switch language',
-            typewriter_roles: ['Software Engineer', 'React.js Developer', 'Next.js Developer', 'Problem Solver']
+            typewriter_roles: ['Full-Stack Engineer', 'Programming Team Leader', 'Secure SDLC Practitioner', 'AI Integration Engineer']
         },
         ar: {
             nav_home: 'الرئيسية',
@@ -112,18 +134,20 @@ document.addEventListener('DOMContentLoaded', function() {
             visit_counter_prefix: '👀 الزيارات:',
             visit_counter_empty: '👀 الزيارات: —',
             hero_greeting: 'مرحباً، أنا',
-            hero_subtitle: 'مطور واجهات أمامية ومهندس برمجيات',
+            hero_subtitle: 'مهندس برمجيات متكامل (Full-Stack) وقائد فريق برمجيات',
             hero_type_prefix: 'أنا',
-            hero_description: 'شغوف ببناء تجارب رقمية مميزة عبر كود نظيف وحلول مبتكرة وتقنيات حديثة.',
+            hero_description: 'متخصص في معمارية الأنظمة البرمجية الضخمة، ودورة حياة التطوير الآمنة (Secure SDLC)، ودمج الأنظمة السيادية.',
             hero_cta_work: 'استعرض أعمالي',
             hero_cta_contact: 'تواصل معي',
             hero_cta_cv: 'تحميل السيرة الذاتية',
             about_title: 'نبذة عني',
-            about_p1: 'أنا <strong>Software Engineer</strong> متخصص في تطوير الواجهات والتطوير Full-stack. أقوم ببناء تطبيقات عالية الأداء وتفاعلية باستخدام <strong>React.js</strong> و <strong>Next.js</strong> وتقنيات Backend مثل <strong>Node.js</strong> و <strong>Express.js</strong> و <strong>Nest.js</strong>.',
-            about_p2: 'أطوّر خوارزميات وهياكل بيانات متقدمة مثل <strong>Dijkstra</strong> و <strong>BST</strong> و <strong>AVL</strong> وتقنيات AI مثل <strong>ExpectiMinMax</strong> لألعاب مثل Minesweeper و Ludo. أركّز على الدمج بين واجهات أنيقة ومنطق قوي قابل للتوسع.',
-            about_stat_projects: 'المشاريع',
+            about_p1: '<strong>مهندس برمجيات وقائد فريق تقني</strong> بخبرة عميقة تغطي كامل البنية البرمجية (Full-Stack)؛ بدءاً من بناء واجهات أمامية عالية الأداء وقابلة للتوسع باستخدام <strong>React.js</strong> و <strong>Next.js</strong> (الإصدارات 15/16)، وصولاً إلى هندسة واجهات خلفية متينة باستخدام <strong>NestJS</strong>، وإدارة بنى تحتية آمنة للنشر (<strong>Linux</strong>, <strong>Nginx</strong>, <strong>Docker</strong>).',
+            about_p2: 'أمتلك سجلاً حافلاً في قيادة الفرق البرمجية المشتركة، وحوكمة الكود، وتطبيق معمارية الحماية الصفرية (<strong>Zero-Trust</strong>)، ودمج قدرات الذكاء الاصطناعي في بيئات رقمية سيادية.',
+            about_stat_projects: 'مشاريع مؤسساتية وسيادية',
             about_stat_years: 'سنوات الخبرة',
             about_stat_tech: 'التقنيات',
+            about_stat_teams: 'فريق متعدد التخصصات تمت قيادته',
+            about_stat_scale: 'نطاق الموظفين والخدمات العامة',
             project_easy_apply_title: 'نظام التقديم السريع',
             project_easy_apply_desc: 'بوابة آمنة وديناميكية لاستقبال أعداد كبيرة من الطلبات. تم تنفيذ واجهة تعتمد على البيانات بحيث يتم جلب كل المحتوى وعرضه ديناميكياً بناءً على إعدادات المسؤول. <br><strong>بدون VPN، متاح فقط عبر IP سوري</strong>',
             project_services_dashboard_title: 'منصة CloudTech IT',
@@ -150,8 +174,23 @@ document.addEventListener('DOMContentLoaded', function() {
             project_modarnet_desc: 'موقع شركة موحد يجمع بين خدمات ISP وحلول الطاقة الشمسية ضمن عرض خدمات واحد.',
             project_management_dashboard_title: 'لوحة الإدارة',
             project_management_dashboard_desc: 'لوحة إدارية داخلية لإدارة الموظفين والخدمات والصلاحيات وسير العمل التشغيلي.',
-            exp_work_role_next: 'مطور Next.js',
-            exp_work_desc_next: 'بناء تطبيقات ويب عالية الأداء ومحسّنة لمحركات البحث باستخدام Next.js مع توظيف Server-Side Rendering (SSR) وClient-Side Rendering (CSR). تطوير لوحات تحكم متقدمة بتفاعلية لحظية وبنية Modular ومسارات ديناميكية باستخدام Next.js app directory.',
+            project_reinstatement_badge: 'قريباً / مشروع داخلي',
+            project_reinstatement_short: 'إعادة المفصولين الحكومي',
+            project_reinstatement_title: 'نظام إعادة المفصولين الحكومي',
+            project_reinstatement_desc: 'منصة مؤسساتية كاملة (Full-Stack) آمنة للغاية مصممة لأتمتة وتبسيط تدفقات العمل الإدارية الحساسة وإعادة الموظفين في القطاع العام. تمتاز بنظام تحكم صارم بالصلاحيات (RBAC)، وتشفير متقدم للبيانات، وإدارة الطوابير البرمجية غير المتنزامنة لمعالجة المستندات بأمان.',
+            project_qatrah_badge: 'بنية تحتية خاصة',
+            project_qatrah_short: 'قطرة',
+            project_qatrah_title: 'مشروع قطرة (منصة إدارة المياه)',
+            project_qatrah_desc: 'منصة إقليمية استراتيجية تم تطويرها للقطاع العام لإدارة شبكات توزيع الموارد المائية، وتسجيل مشكلات البنية التحتية، ومتابعة شكاوى المواطنين عبر لوحة تحكم ذكية للمراقبة الفورية.',
+            project_aoun_ai_badge: 'عرض مباشر',
+            project_aoun_ai_short: 'عون AI',
+            project_aoun_ai_title: 'منصة عون للذكاء الاصطناعي (نموذج أولي)',
+            project_aoun_ai_desc: 'طبقة تفاعلية سيادية ومساعد ذكي مدعوم بالذكاء الاصطناعي. تم بناء مساعد خلفي خفيف ومستقل باستخدام Python لمعالجة الأوامر السياقية بشكل آمن، ويتم العمل حالياً على توسيعه لدمج LangChain و DeepSeek لأتمتة المهام الحكومية.',
+            exp_lead_role: 'قائد فريق برمجيات',
+            exp_lead_company: 'مديرية التحول الرقمي',
+            exp_lead_desc: '<li>قيادة وتوجيه فريق برمجيات متعدد التخصصات يشمل مطوري واجهات أمامية وخلفية، مطوري هواتف، محللي أنظمة، ومتدربي أمن سيبراني وذكاء اصطناعي.</li><li>الإشراف على المعمارية، الأمن، والنشر للمنصات الحكومية الاستراتيجية الحساسة.</li><li>تأسيس حوكمة صارمة للكود وسير عمل آمن عبر GitLab (فرض عزلة الفروع البرمجية، منع الدفع المباشر، وفرض مراجعات دقيقة لطلبات الدمج).</li><li>إدارة البنى التحتية المحلية للإنتاج، ضبط خوادم Nginx (الوكيل العكسي، شهادات SSL، وأنظمة الصيانة المخصصة)، ومراقبة عمليات PM2 و systemd.</li>',
+            exp_work_role_next: 'مهندس واجهات أمامية / مهندس برمجيات',
+            exp_work_desc_next: '<li>هندسة الأداء: إعادة هيكلة وتحسين تطبيق "الفتح" متعدد الخدمات، ورفع مؤشرات الأداء (Core Web Vitals) من 71% إلى +90%.</li><li>المعمارية الديناميكية: تصميم وبناء محرك تطبيقات ديناميكي بالكامل للتحكم في حقول الإدخال، وتنسيقات الواجهة، والمحتوى متعدد اللغات عبر لوحة تحكم الإدارة.</li><li>تطبيقات الاتصالات: تطوير بوابات مخصصة آمنة وسريعة الاستجابة ومنصات مؤسساتية لمزودي خدمات الإنترنت الإقليميين (GalaxyNet، OmniSmartStar) مع مراقبة حية لبيانات WebSocket.</li><li>عمليات النشر (DevOps): الحفاظ على استقرار بيئات الإنتاج من خلال إدارة حاويات Docker، وتوجيه Nginx، وإعدادات SSL.</li>',
             exp_basic_role_se: 'مهندس برمجيات',
             exp_basic_org_uni: 'جامعتي',
             exp_basic_desc_se: 'تطوير آليات اللعب وأنظمة AI لمشاريع متعددة، وتنفيذ خوارزميات pathfinding وتحسين أداء الألعاب على منصات مختلفة.',
@@ -164,6 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
             projects_filter_game: 'تطوير الألعاب',
             projects_filter_ai: 'الذكاء الاصطناعي والخوارزميات',
             skills_title: 'المهارات والخبرة',
+            skills_frontend_title: 'الواجهات الأمامية',
+            skills_backend_title: 'الخلفية وقواعد البيانات',
+            skills_devops_title: 'البنية التحتية والنشر',
+            skills_security_title: 'المعمارية والأمان',
+            skills_ai_title: 'دمج الذكاء الاصطناعي',
             experience_title: 'الخبرة العملية',
             basic_experience_title: 'خبرات أساسية',
             contact_title: 'لنتواصل',
@@ -183,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function() {
             speed_slow: 'بطيء',
             speed_normal: 'عادي',
             speed_fast: 'سريع',
-            footer_subtitle: 'مطور واجهات أمامية ومهندس برمجيات',
+            footer_subtitle: 'مهندس برمجيات متكامل (Full-Stack) وقائد فريق برمجيات',
             footer_copyright: '© 2024 عبدالقادر الشنبور. جميع الحقوق محفوظة.',
             lang_toggle_label: 'تبديل اللغة',
-            typewriter_roles: ['مهندس برمجيات', 'مطور React.js', 'مطور Next.js', 'محلل مشكلات']
+            typewriter_roles: ['مهندس Full-Stack', 'قائد فريق برمجيات', 'مختص Secure SDLC', 'مهندس دمج AI']
         }
     };
 
@@ -451,16 +495,17 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateAboutNumbers() {
         document.querySelectorAll('.number').forEach(num => {
             const target = parseInt(num.getAttribute('data-count'));
+            const suffix = num.getAttribute('data-suffix') || '';
             let count = 0;
             const increment = target / 50;
 
             const timer = setInterval(() => {
                 count += increment;
                 if (count >= target) {
-                    num.textContent = target;
+                    num.textContent = `${target}${suffix}`;
                     clearInterval(timer);
                 } else {
-                    num.textContent = Math.ceil(count);
+                    num.textContent = `${Math.ceil(count)}${suffix}`;
                 }
             }, 20);
         });
