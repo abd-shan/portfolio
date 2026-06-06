@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             project_easy_apply_title: 'Easy Apply System',
             project_easy_apply_desc: 'A secure, dynamic portal for high-volume applications. Implemented a data-driven UI where all content is dynamically fetched and rendered based on admin configurations. <br><strong>No VPN, Syrian IP only</strong>',
             project_services_dashboard_title: 'CloudTech IT Platform',
-            project_services_dashboard_desc: 'Full enterprise website with an advanced management dashboard covering RBAC, CMS, ticketing, backups, and application workflows.',
+            project_services_dashboard_desc: 'Full enterprise website with an advanced management dashboard covering RBAC, CMS, ticketing, backups, and application workflows. (No VPN, Syrian IP only)',
             project_selfcare_title: 'ISP Self-Care System',
             project_selfcare_desc: 'Customer portal for billing, session tracking, transactions, and subscription management. Built for real ISP operations.',
             project_hr_title: 'HR Management System',
